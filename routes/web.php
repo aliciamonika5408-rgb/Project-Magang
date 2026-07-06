@@ -5,11 +5,14 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\QuotationController;
 use App\Http\Controllers\ContactFormController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminHomeController;
 use App\Http\Controllers\Admin\AdminServiceController;
+use App\Http\Controllers\Admin\AdminOtherServiceController;
 use App\Http\Controllers\Admin\AdminProjectController;
 use App\Http\Controllers\Admin\AdminClientController;
 use App\Http\Controllers\Admin\AdminQuotationController;
 use App\Http\Controllers\Admin\AdminContactController;
+use App\Http\Controllers\Admin\AdminSettingController;
 use Illuminate\Support\Facades\Route;
 
 // --- Public Routes ---
@@ -37,11 +40,19 @@ Route::middleware('auth')->group(function () {
 
 // --- Admin CRUD Panel Routes ---
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
+    // Single Unified Home Editor Route
+    Route::get('home-editor', [AdminHomeController::class, 'index'])->name('home-editor');
+
     Route::resource('services', AdminServiceController::class);
+    Route::resource('other-services', AdminOtherServiceController::class);
     Route::delete('projects/gallery/{id}', [AdminProjectController::class, 'deleteGalleryImage'])->name('projects.gallery.destroy');
     Route::resource('projects', AdminProjectController::class);
     Route::resource('clients', AdminClientController::class);
     
+    // Company Statistics Settings
+    Route::get('settings', [AdminSettingController::class, 'index'])->name('settings.index');
+    Route::post('settings', [AdminSettingController::class, 'update'])->name('settings.update');
+
     // Quotations (View, update status, delete)
     Route::get('quotations', [AdminQuotationController::class, 'index'])->name('quotations.index');
     Route::get('quotations/{id}', [AdminQuotationController::class, 'show'])->name('quotations.show');
@@ -55,4 +66,3 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
 });
 
 require __DIR__.'/auth.php';
-

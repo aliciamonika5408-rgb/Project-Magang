@@ -4,31 +4,42 @@
 
 @section('content')
 <!-- Hero Section -->
-<section id="home" class="hero-section overflow-hidden position-relative" style="min-height: 95vh; margin-top: -80px;">
-    <div class="position-absolute top-0 start-0 w-100 h-100 hero-zoom-bg" style="background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center; z-index: 1;"></div>
-    <div class="hero-overlay" style="z-index: 2; background: linear-gradient(135deg, rgba(30, 30, 30, 0.88) 0%, rgba(30, 30, 30, 0.75) 100%);"></div>
+<section id="home" class="hero-section overflow-hidden position-relative d-flex align-items-center justify-content-center" style="min-height: 85vh; padding-top: 60px; padding-bottom: 70px;">
+    <!-- Animated Moving Background Slider (4 Real Project Photos) -->
+    <div class="hero-bg-slider position-absolute top-0 start-0 w-100 h-100" style="z-index: 1;">
+        <div class="hero-slide active" style="background-image: url('{{ asset('images/hero-1.jpg') }}');"></div>
+        <div class="hero-slide" style="background-image: url('{{ asset('images/hero-2.jpg') }}');"></div>
+        <div class="hero-slide" style="background-image: url('{{ asset('images/hero-3.jpg') }}');"></div>
+        <div class="hero-slide" style="background-image: url('{{ asset('images/hero-4.png') }}');"></div>
+    </div>
+    <!-- Gradient Overlay for Contrast -->
+    <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100" style="z-index: 2; background: linear-gradient(135deg, rgba(11, 19, 41, 0.88) 0%, rgba(15, 23, 42, 0.78) 50%, rgba(13, 0, 0, 0.85) 100%);"></div>
+    <!-- Animated moving red light glow -->
+    <div class="hero-red-light"></div>
+    <!-- Dust particles canvas -->
+    <canvas id="hero-particles"></canvas>
     <!-- Red diagonal accent -->
-    <div class="position-absolute" style="z-index: 2; top: 0; right: 0; width: 40%; height: 100%; background: linear-gradient(135deg, transparent 40%, rgba(220, 38, 38, 0.15) 100%); clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);"></div>
-    <div class="position-absolute" style="z-index: 2; top: 0; right: -5%; width: 25%; height: 100%; background: rgba(220, 38, 38, 0.6); clip-path: polygon(60% 0, 100% 0, 100% 100%, 30% 100%);"></div>
-    <div class="container hero-content text-center text-lg-start" style="z-index: 3; position: relative; padding-top: 100px;">
-        <div class="row align-items-center g-5">
-            <div class="col-lg-8">
-                <h1 class="hero-title reveal display-4 text-white fw-bold mb-3" style="letter-spacing: -1px; transition-delay: 0.1s;">
-                    Membangun Struktur,<br>
-                    <span style="color: var(--accent-orange);">Menguatkan</span> Masa Depan
+    <div class="position-absolute" style="z-index: 3; top: 0; right: 0; width: 40%; height: 100%; background: linear-gradient(135deg, transparent 40%, rgba(220, 38, 38, 0.12) 100%); clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);"></div>
+    <div class="position-absolute" style="z-index: 3; top: 0; right: -5%; width: 25%; height: 100%; background: rgba(180, 10, 10, 0.55); clip-path: polygon(60% 0, 100% 0, 100% 100%, 30% 100%);"></div>
+    <div class="container hero-content text-center position-relative" style="z-index: 5; margin-top: -25px;">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 col-xl-9 text-center">
+                <h1 class="hero-title display-4 text-white fw-bold mb-3" style="letter-spacing: -1px;">
+                    Konstruksi Baja Profesional<br class="d-none d-md-block">
+                    untuk Gudang, Pabrik, dan Infrastruktur Industri
                 </h1>
-                <p class="hero-subtitle reveal lead text-white-50 mb-4" style="transition-delay: 0.3s; max-width: 650px;">
-                    Layanan konstruksi baja, fabrikasi, dan steel erection berkualitas dengan standar keamanan terbaik.
+                <p class="hero-subtitle lead text-white-50 mb-4 mx-auto" style="max-width: 720px;">
+                    PT. Multi Power Abadi menghadirkan layanan konstruksi baja premium, fabrikasi presisi, dan steel erection untuk proyek industri yang menuntut kekuatan, keamanan, dan penyerahan tepat waktu.
                 </p>
-                <div class="d-flex flex-wrap justify-content-center justify-content-lg-start gap-3 reveal" style="transition-delay: 0.5s;">
-                    <a href="{{ route('public.quotation') }}" class="btn btn-accent btn-lg btn-ripple shadow-lg px-4 text-white">Request Quotation</a>
+                <div class="d-flex flex-wrap justify-content-center gap-3 reveal" style="transition-delay: 0.5s;">
+                    <a href="{{ route('public.quotation') }}" class="btn btn-accent btn-lg btn-ripple shadow-lg px-4 text-white" style="transition: transform 0.3s ease, box-shadow 0.3s ease;">Request Quotation</a>
                     <a href="{{ route('public.projects.index') }}" class="btn btn-outline-white btn-lg btn-ripple px-4">Lihat Portfolio</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Scroll Down Indicator -->
-    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 text-center reveal" style="z-index: 3; transition-delay: 0.8s;">
+    <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 text-center reveal" style="z-index: 7; transition-delay: 0.8s;">
         <a href="#stats" class="text-white text-decoration-none">
             <div class="d-flex flex-column align-items-center">
                 <span class="text-white-50 text-uppercase small mb-2" style="letter-spacing: 2px;">Scroll Down</span>
@@ -38,71 +49,92 @@
     </div>
 </section>
 
-<!-- Statistics Grid -->
-<section id="stats" class="py-5 bg-white border-bottom">
-    <div class="container">
-        <div class="row g-4 text-center">
-            <div class="col-6 col-md-3 reveal" style="transition-delay: 0.1s;">
-                <div class="stat-item p-4 border rounded-4 h-100" style="border-color: #e5e7eb !important;">
-                    <div class="mb-2"><i class="bi bi-calendar-check fs-3" style="color: var(--accent-orange);"></i></div>
-                    <div class="stat-number display-5 fw-bold" style="color: var(--text-dark);" data-target="10" data-suffix="+">0</div>
-                    <div class="stat-label text-muted small text-uppercase" style="letter-spacing: 1px;">Tahun<br>Pengalaman</div>
+<!-- Statistics Grid — Premium Dark -->
+<section id="stats" class="stats-premium py-5">
+    <div class="container py-3">
+        <div class="row g-0">
+            <div class="col-6 col-md-3 reveal" style="transition-delay:0.1s;">
+                <div class="stat-premium-card">
+                    <div class="stat-premium-icon"><i class="bi bi-calendar-check"></i></div>
+                    <div class="stat-premium-number stat-number" data-target="{{ $stats['years_experience'] ?? '15' }}" data-suffix="+">0</div>
+                    <div class="stat-premium-label">Tahun Pengalaman</div>
                 </div>
             </div>
-            <div class="col-6 col-md-3 reveal" style="transition-delay: 0.2s;">
-                <div class="stat-item p-4 border rounded-4 h-100" style="border-color: #e5e7eb !important;">
-                    <div class="mb-2"><i class="bi bi-building-check fs-3" style="color: var(--accent-orange);"></i></div>
-                    <div class="stat-number display-5 fw-bold" style="color: var(--text-dark);" data-target="150" data-suffix="+">0</div>
-                    <div class="stat-label text-muted small text-uppercase" style="letter-spacing: 1px;">Proyek<br>Selesai</div>
+            <div class="col-6 col-md-3 reveal" style="transition-delay:0.2s;">
+                <div class="stat-premium-card">
+                    <div class="stat-premium-icon"><i class="bi bi-building-check"></i></div>
+                    <div class="stat-premium-number stat-number" data-target="{{ $stats['projects_completed'] ?? '150' }}" data-suffix="+">0</div>
+                    <div class="stat-premium-label">Proyek Selesai</div>
                 </div>
             </div>
-            <div class="col-6 col-md-3 reveal" style="transition-delay: 0.3s;">
-                <div class="stat-item p-4 border rounded-4 h-100" style="border-color: #e5e7eb !important;">
-                    <div class="mb-2"><i class="bi bi-patch-check fs-3" style="color: var(--accent-orange);"></i></div>
-                    <div class="stat-number display-5 fw-bold" style="color: var(--text-dark);" data-target="100" data-suffix="%">0</div>
-                    <div class="stat-label text-muted small text-uppercase" style="letter-spacing: 1px;">Komitmen<br>Kualitas</div>
+            <div class="col-6 col-md-3 reveal" style="transition-delay:0.3s;">
+                <div class="stat-premium-card">
+                    <div class="stat-premium-icon"><i class="bi bi-people-fill"></i></div>
+                    <div class="stat-premium-number stat-number" data-target="{{ $stats['experts_count'] ?? '50' }}" data-suffix="+">0</div>
+                    <div class="stat-premium-label">Tenaga Ahli</div>
                 </div>
             </div>
-            <div class="col-6 col-md-3 reveal" style="transition-delay: 0.4s;">
-                <div class="stat-item p-4 border rounded-4 h-100" style="border-color: #e5e7eb !important;">
-                    <div class="mb-2"><i class="bi bi-shield-check fs-3" style="color: var(--accent-orange);"></i></div>
-                    <div class="stat-number display-5 fw-bold" style="color: var(--text-dark);" data-target="0" data-suffix="">0</div>
-                    <div class="stat-label text-muted small text-uppercase" style="letter-spacing: 1px;">Kecelakaan<br>Kerja</div>
+            <div class="col-6 col-md-3 reveal" style="transition-delay:0.4s;">
+                <div class="stat-premium-card">
+                    <div class="stat-premium-icon"><i class="bi bi-shield-fill-check"></i></div>
+                    <div class="stat-premium-number">{{ $stats['work_accidents'] ?? '0' }}</div>
+                    <div class="stat-premium-label">Kecelakaan Kerja</div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
+
 <!-- About / Intro Section -->
 <section id="about" class="py-5 bg-light">
     <div class="container py-4">
         <div class="row align-items-center g-5">
             <div class="col-lg-6 reveal reveal-left">
-                <div class="position-relative">
-                    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=800&auto=format&fit=crop" class="img-fluid rounded-4 shadow-lg" alt="Construction Site">
-                    <div class="position-absolute bottom-0 start-0 bg-warning text-dark p-4 rounded-4 m-3 shadow-lg float-effect">
-                        <h4 class="fw-bold mb-0">15+ Tahun</h4>
-                        <p class="mb-0 text-sm">Menangani Proyek Konstruksi Baja Besar</p>
+                <div class="position-relative overflow-hidden rounded-4 shadow-lg" style="min-height: 350px; background: linear-gradient(135deg, #0b1329 0%, #1e293b 100%);">
+                    <!-- Industrial Steel Construction SVG Graphic -->
+                    <svg width="100%" height="350" viewBox="0 0 600 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <pattern id="aboutGrid" width="30" height="30" patternUnits="userSpaceOnUse">
+                                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+                            </pattern>
+                            <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="1">
+                                <stop offset="0%" stop-color="#dc2626"/>
+                                <stop offset="100%" stop-color="#991b1b"/>
+                            </linearGradient>
+                        </defs>
+                        <rect width="100%" height="100%" fill="url(#aboutGrid)"/>
+                        <!-- Diagonal Construction Beams -->
+                        <path d="M 40 320 L 200 70 L 360 320 M 200 70 L 560 320" stroke="url(#beamGrad)" stroke-width="10" stroke-linecap="round"/>
+                        <path d="M 90 240 H 480 M 140 160 H 330" stroke="rgba(255,255,255,0.18)" stroke-width="6"/>
+                        <!-- Structural Pillars & Crane Wire -->
+                        <path d="M 40 320 V 140 M 200 320 V 70 M 360 320 V 140 M 560 320 V 140" stroke="#0284c7" stroke-width="6" opacity="0.7"/>
+                        <path d="M 200 70 L 460 30 M 460 30 V 190" stroke="#eab308" stroke-width="5" stroke-dasharray="8 6"/>
+                        <circle cx="460" cy="190" r="12" fill="#eab308"/>
+                    </svg>
+                    <!-- Floating Badge -->
+                    <div class="position-absolute bottom-0 start-0 bg-danger text-white p-4 rounded-4 m-3 shadow-lg float-effect">
+                        <h4 class="fw-bold mb-0">{{ $stats['years_experience'] ?? '15' }}+ Tahun</h4>
+                        <p class="mb-0 text-sm">Menghadirkan Struktur Baja Andalan</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 reveal reveal-right" style="transition-delay: 0.2s;">
-                <span class="text-uppercase fw-bold text-warning" style="letter-spacing: 2px;">Tentang Kami</span>
-                <h2 class="mt-2 mb-4 display-6 fw-bold text-navy">Membangun Masa Depan Dengan Konstruksi Baja Kokoh</h2>
-                <p class="text-muted mb-4 lead">PT. Multi Power Abadi adalah spesialis dalam pembangunan gedung industri, pergudangan, struktur baja, fabrikasi baja berkualitas tinggi, dan pemasangan baja presisi (steel erection).</p>
-                <p class="text-muted mb-4">Kami memadukan material bersertifikat, mesin modern, serta tim insinyur ahli untuk menjamin keamanan, efisiensi biaya, dan ketepatan waktu serah terima proyek.</p>
+                <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px;">Layanan Konstruksi Baja</span>
+                <h2 class="mt-2 mb-4 display-6 fw-bold text-navy">Solusi Struktur Baja Terintegrasi Untuk Industri</h2>
+                <p class="text-muted mb-4 lead">PT. Multi Power Abadi melayani proyek konstruksi baja untuk gudang, pabrik, hangar, dan bangunan industri dengan pendekatan teknis yang matang dan eksekusi lapangan terkontrol.</p>
+                <p class="text-muted mb-4">Kami menggabungkan desain struktural, fabrikasi workshop, serta steel erection lapangan menjadi satu layanan end-to-end yang menjamin kualitas, kekuatan, dan ketahanan jangka panjang.</p>
                 <div class="row g-3">
                     <div class="col-sm-6">
                         <div class="d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-warning fs-5"></i>
-                            <span class="fw-semibold text-navy">Peralatan Modern</span>
+                            <i class="bi bi-check-circle-fill text-danger fs-5"></i>
+                            <span class="fw-semibold text-navy">Desain Struktur Baja</span>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-warning fs-5"></i>
-                            <span class="fw-semibold text-navy">Material Bersertifikat SNI</span>
+                            <i class="bi bi-check-circle-fill text-danger fs-5"></i>
+                            <span class="fw-semibold text-navy">Fabrikasi & Erection</span>
                         </div>
                     </div>
                 </div>
@@ -116,8 +148,8 @@
     <div class="container py-4">
         <div class="text-center mb-5 reveal">
             <span class="text-uppercase fw-bold text-warning" style="letter-spacing: 2px;">Layanan Kami</span>
-            <h2 class="mt-2 display-6 fw-bold text-navy">Solusi Konstruksi Terintegrasi</h2>
-            <p class="text-muted mx-auto" style="max-width: 600px;">Kami melayani seluruh rangkaian proyek bangunan industri mulai perencanaan desain hingga finishing.</p>
+            <h2 class="mt-2 display-6 fw-bold text-navy">Solusi Konstruksi Baja End-to-End</h2>
+            <p class="text-muted mx-auto" style="max-width: 600px;">Layanan struktur baja lengkap dari desain, fabrikasi, steel erection, hingga serah terima untuk gudang dan fasilitas industri.</p>
         </div>
 
         <div class="row g-4">
@@ -127,15 +159,19 @@
                         <div class="card-img-wrapper" style="height: 220px; overflow: hidden; position: relative;">
                             <img src="{{ $service->image ? asset('storage/' . $service->image) : 'https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=600&auto=format&fit=crop' }}" class="w-100 h-100 object-fit-cover transition-zoom" alt="{{ $service->title }}">
                         </div>
-                        <div class="card-body p-4 position-relative">
-                            <div class="service-icon-box bg-navy text-white rounded-3 d-inline-flex align-items-center justify-content-center mb-3 shadow" style="width: 50px; height: 50px; font-size: 1.5rem;">
-                                <i class="bi {{ $service->icon ?? 'bi-building' }}"></i>
+                        <div class="card-body p-4 position-relative d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="service-icon-box mb-3">
+                                    <i class="bi {{ $service->icon ?? 'bi-building' }}"></i>
+                                </div>
+                                <h4 class="card-title fw-bold text-navy mb-2">{{ $service->title }}</h4>
+                                <p class="text-muted mb-3">{{ Str::limit($service->description, 110) }}</p>
                             </div>
-                            <h4 class="card-title fw-bold text-navy mb-2">{{ $service->title }}</h4>
-                            <p class="text-muted mb-3">{{ Str::limit($service->description, 110) }}</p>
-                            <a href="{{ route('public.services.detail', $service->slug) }}" class="text-warning text-decoration-none fw-semibold">
-                                Selengkapnya <i class="bi bi-arrow-right ms-1"></i>
-                            </a>
+                            <div class="mt-2">
+                                <a href="{{ route('public.services.detail', $service->slug) }}" class="btn-service-more">
+                                    <span>Selengkapnya</span> <i class="bi bi-arrow-right ms-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -143,11 +179,11 @@
                 <!-- Fallback static services if DB is empty -->
                 @php
                     $staticServices = [
-                        ['title' => 'Konstruksi Gudang', 'desc' => 'Desain & pembangunan gudang skala kecil hingga logistik enterprise dengan bentang lebar tanpa tiang tengah.', 'icon' => 'bi-building-fill-add', 'img' => 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop'],
-                        ['title' => 'Konstruksi Baja', 'desc' => 'Struktur baja berat untuk pabrik, gedung bertingkat, hangar pesawat, dengan kestabilan seismik optimal.', 'icon' => 'bi-cone-striped', 'img' => 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=600&auto=format&fit=crop'],
-                        ['title' => 'Fabrikasi Baja', 'desc' => 'Pemotongan, pembentukan, pengeboran, dan pengelasan plat & profil baja di workshop tersertifikasi milik kami.', 'icon' => 'bi-tools', 'img' => 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop'],
-                        ['title' => 'Steel Erection', 'desc' => 'Pemasangan komponen struktur baja di lapangan secara cepat, akurat, aman dengan tim crane bersertifikat.', 'icon' => 'bi-wrench-adjustable', 'img' => 'https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=600&auto=format&fit=crop'],
-                        ['title' => 'Bangunan Industri', 'desc' => 'Pembangunan pabrik kimia, pengolahan makanan, workshop industri lengkap dengan utilitas kelistrikan & ducting.', 'icon' => 'bi-industry', 'img' => 'https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=600&auto=format&fit=crop']
+                        ['title' => 'Konstruksi Gudang', 'desc' => 'Desain & pembangunan gudang skala kecil hingga logistik enterprise dengan bentang lebar tanpa tiang tengah.', 'icon' => 'bi-building-fill-add', 'img' => asset('images/gudang-pabrik.jpg')],
+                        ['title' => 'Konstruksi Baja', 'desc' => 'Struktur baja berat untuk pabrik, gedung bertingkat, hangar pesawat, dengan kestabilan seismik optimal.', 'icon' => 'bi-cone-striped', 'img' => asset('images/konstruksi-baja.jpg')],
+                        ['title' => 'Fabrikasi Baja', 'desc' => 'Pemotongan, pembentukan, pengeboran, dan pengelasan plat & profil baja di workshop tersertifikasi milik kami.', 'icon' => 'bi-tools', 'img' => asset('images/fabrikasi-baja.jpg')],
+                        ['title' => 'Steel Erection', 'desc' => 'Pemasangan komponen struktur baja di lapangan secara cepat, akurat, aman dengan tim crane bersertifikat.', 'icon' => 'bi-wrench-adjustable', 'img' => asset('images/steel-erection.jpg')],
+                        ['title' => 'Bangunan Industri', 'desc' => 'Pembangunan pabrik kimia, pengolahan makanan, workshop industri lengkap dengan utilitas kelistrikan & ducting.', 'icon' => 'bi-industry', 'img' => asset('images/bangunan-industri.jpg')]
                     ];
                 @endphp
                 @foreach($staticServices as $index => $item)
@@ -156,16 +192,71 @@
                             <div class="card-img-wrapper" style="height: 220px; overflow: hidden; position: relative;">
                                 <img src="{{ $item['img'] }}" class="w-100 h-100 object-fit-cover" alt="{{ $item['title'] }}">
                             </div>
-                            <div class="card-body p-4 position-relative">
-                                <div class="service-icon-box bg-navy text-white rounded-3 d-inline-flex align-items-center justify-content-center mb-3 shadow" style="width: 50px; height: 50px; font-size: 1.5rem;">
-                                    <i class="bi {{ $item['icon'] }}"></i>
+                            <div class="card-body p-4 position-relative d-flex flex-column justify-content-between">
+                                <div>
+                                    <div class="service-icon-box mb-3">
+                                        <i class="bi {{ $item['icon'] }}"></i>
+                                    </div>
+                                    <h4 class="card-title fw-bold text-navy mb-2">{{ $item['title'] }}</h4>
+                                    <p class="text-muted mb-3">{{ $item['desc'] }}</p>
                                 </div>
-                                <h4 class="card-title fw-bold text-navy mb-2">{{ $item['title'] }}</h4>
-                                <p class="text-muted mb-3">{{ $item['desc'] }}</p>
-                                <a href="{{ route('public.services.index') }}" class="text-warning text-decoration-none fw-semibold">
-                                    Selengkapnya <i class="bi bi-arrow-right ms-1"></i>
-                                </a>
+                                <div class="mt-2">
+                                    <a href="{{ route('public.services.index') }}" class="btn-service-more">
+                                        <span>Selengkapnya</span> <i class="bi bi-arrow-right ms-1"></i>
+                                    </a>
+                                </div>
                             </div>
+                        </div>
+                    </div>
+                @endforeach
+            @endforelse
+        </div>
+    </div>
+</section>
+
+<!-- Layanan Lainnya Section -->
+<section id="other-services" class="py-5 bg-light">
+    <div class="container py-4">
+        <div class="text-center mb-5 reveal">
+            <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px; font-size: 0.85rem;">LAYANAN DUKUNGAN</span>
+            <h2 class="mt-2 display-6 fw-bold text-navy">Layanan Lainnya</h2>
+            <p class="text-muted mx-auto mt-3" style="max-width: 720px; font-size: 0.95rem;">Selain sebagai kontraktor baja, PT. Multi Power Abadi juga menyediakan berbagai layanan konstruksi dan interior untuk memenuhi kebutuhan proyek residensial maupun komersial.</p>
+        </div>
+
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mt-2">
+            @forelse($otherServices as $index => $service)
+                @php
+                    $isObj = is_object($service);
+                    $title = $isObj ? $service->title : ($service['title'] ?? '');
+                    $desc = $isObj ? $service->description : ($service['desc'] ?? $service['description'] ?? '');
+                    $icon = $isObj ? $service->icon : ($service['icon'] ?? 'bi-tools');
+                @endphp
+                <div class="col reveal" style="transition-delay: {{ 0.1 * ($index + 1) }}s;">
+                    <div class="other-service-card h-100 p-4 bg-white rounded-4 border shadow-sm transition-all position-relative overflow-hidden d-flex flex-column">
+                        <div class="other-service-icon-box mb-4 d-inline-flex align-items-center justify-content-center rounded-3">
+                            <i class="bi {{ $icon }}"></i>
+                        </div>
+                        <h5 class="fw-bold text-navy mb-3 fs-6" style="line-height: 1.4;">{{ $title }}</h5>
+                        <p class="text-muted text-sm mb-0 flex-grow-1" style="font-size: 0.88rem; line-height: 1.6;">{{ $desc }}</p>
+                    </div>
+                </div>
+            @empty
+                @php
+                    $staticOtherServices = [
+                        ['title' => 'Konstruksi Renovasi Residensial & Komersial', 'desc' => 'Melayani renovasi rumah, gedung perkantoran, ruko, toko, restoran, dan bangunan komersial dengan hasil yang berkualitas dan sesuai kebutuhan klien.', 'icon' => 'bi-house-gear-fill'],
+                        ['title' => 'Design Build Arsitektur & Interior', 'desc' => 'Menyediakan layanan desain arsitektur, desain interior, hingga pembangunan secara menyeluruh dalam satu proses yang terintegrasi.', 'icon' => 'bi-vector-pen'],
+                        ['title' => 'Pekerjaan Sipil, Mekanikal, Elektrikal & Plumbing (CMEP)', 'desc' => 'Menangani pekerjaan sipil, instalasi mekanikal, elektrikal, plumbing, serta sistem pendukung bangunan sesuai standar konstruksi.', 'icon' => 'bi-lightning-charge-fill'],
+                        ['title' => 'Workshop Furniture & Custom Interior', 'desc' => 'Memproduksi berbagai furniture custom, kitchen set, office furniture, partisi, serta kebutuhan interior sesuai desain dan spesifikasi proyek.', 'icon' => 'bi-hammer']
+                    ];
+                @endphp
+                @foreach($staticOtherServices as $index => $service)
+                    <div class="col reveal" style="transition-delay: {{ 0.15 * ($index + 1) }}s;">
+                        <div class="other-service-card h-100 p-4 bg-white rounded-4 border shadow-sm transition-all position-relative overflow-hidden d-flex flex-column">
+                            <div class="other-service-icon-box mb-4 d-inline-flex align-items-center justify-content-center rounded-3">
+                                <i class="bi {{ $service['icon'] }}"></i>
+                            </div>
+                            <h5 class="fw-bold text-navy mb-3 fs-6" style="line-height: 1.4;">{{ $service['title'] }}</h5>
+                            <p class="text-muted text-sm mb-0 flex-grow-1" style="font-size: 0.88rem; line-height: 1.6;">{{ $service['desc'] }}</p>
                         </div>
                     </div>
                 @endforeach
@@ -293,15 +384,14 @@
         <div class="row g-4">
             @forelse($projects as $project)
                 <div class="col-md-6 col-lg-4 project-showcase-item reveal" data-category="{{ $project->category }}">
-                    <div class="project-card border rounded-4 overflow-hidden position-relative shadow-sm" style="height: 280px;">
-                        <img src="{{ $project->image ? asset('storage/' . $project->image) : 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop' }}" class="w-100 h-100 object-fit-cover transition-zoom" alt="{{ $project->title }}">
+                    <div class="project-card border rounded-4 overflow-hidden position-relative shadow-sm" style="height: 290px;">
+                        <img src="{{ $project->image ? asset('storage/' . $project->image) : asset('images/gudang-pabrik.jpg') }}" class="w-100 h-100 object-fit-cover transition-zoom" alt="{{ $project->title }}">
                         <div class="project-card-overlay p-4 position-absolute bottom-0 start-0 w-100 h-100 d-flex flex-column justify-content-end bg-gradient-navy">
-                            <span class="project-card-category text-warning fw-semibold text-uppercase text-sm">{{ $project->category }}</span>
-                            <h4 class="project-card-title text-white fw-bold my-1">{{ $project->title }}</h4>
-                            <div class="project-card-location text-white-50 text-sm mb-3">
-                                <i class="bi bi-geo-alt-fill me-1"></i> {{ $project->location }}, {{ $project->year }}
+                            <span class="project-card-category badge bg-danger text-white fw-semibold text-uppercase text-xs mb-2 align-self-start shadow-sm" style="letter-spacing: 0.8px;">{{ $project->category }}</span>
+                            <h4 class="project-card-title text-white fw-bold my-1" style="font-size: 1.2rem;">{{ $project->title }}</h4>
+                            <div class="project-card-location text-white-50 small">
+                                <i class="bi bi-geo-alt-fill text-danger me-1"></i> {{ $project->location }}, {{ $project->year }}
                             </div>
-                            <a href="{{ route('public.projects.detail', $project->slug) }}" class="btn btn-warning btn-sm align-self-start fw-semibold shadow">Detail Proyek</a>
                         </div>
                     </div>
                 </div>
@@ -309,22 +399,39 @@
                 <!-- Fallback static projects if DB is empty -->
                 @php
                     $staticProjects = [
-                        ['title' => 'Gudang Logistik Modern', 'category' => 'Gudang', 'location' => 'Bekasi, Jawa Barat', 'year' => 2025, 'img' => 'https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600&auto=format&fit=crop'],
-                        ['title' => 'Hangar Pemeliharaan Pesawat', 'category' => 'Baja', 'location' => 'Tangerang, Banten', 'year' => 2024, 'img' => 'https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=600&auto=format&fit=crop'],
-                        ['title' => 'Pabrik Pengolahan Sawit', 'category' => 'Industri', 'location' => 'Pekanbaru, Riau', 'year' => 2023, 'img' => 'https://images.unsplash.com/photo-1516937941344-00b4e0337589?q=80&w=600&auto=format&fit=crop']
+                        [
+                            'title' => 'Gudang Logistik Modern',
+                            'category' => 'Gudang',
+                            'location' => 'Bekasi, Jawa Barat',
+                            'year' => 2025,
+                            'image' => asset('images/gudang-pabrik.jpg')
+                        ],
+                        [
+                            'title' => 'Hangar Pemeliharaan Pesawat',
+                            'category' => 'Konstruksi Baja',
+                            'location' => 'Tangerang, Banten',
+                            'year' => 2024,
+                            'image' => asset('images/steel-erection.jpg')
+                        ],
+                        [
+                            'title' => 'Pabrik Pengolahan Sawit',
+                            'category' => 'Bangunan Industri',
+                            'location' => 'Pekanbaru, Riau',
+                            'year' => 2023,
+                            'image' => asset('images/bangunan-industri.jpg')
+                        ]
                     ];
                 @endphp
                 @foreach($staticProjects as $item)
                     <div class="col-md-6 col-lg-4 project-showcase-item reveal" data-category="{{ $item['category'] }}">
                         <div class="project-card border rounded-4 overflow-hidden position-relative shadow-sm" style="height: 280px;">
-                            <img src="{{ $item['img'] }}" class="w-100 h-100 object-fit-cover" alt="{{ $item['title'] }}">
-                            <div class="project-card-overlay p-4 position-absolute bottom-0 start-0 w-100 h-100 d-flex flex-column justify-content-end">
-                                <span class="project-card-category text-warning fw-semibold text-uppercase text-sm">{{ $item['category'] }}</span>
-                                <h4 class="project-card-title text-white fw-bold my-1">{{ $item['title'] }}</h4>
-                                <div class="project-card-location text-white-50 text-sm mb-3">
-                                    <i class="bi bi-geo-alt-fill me-1"></i> {{ $item['location'] }}, {{ $item['year'] }}
+                            <img src="{{ $item['image'] }}" class="w-100 h-100 object-fit-cover transition-zoom" alt="{{ $item['title'] }}">
+                            <div class="project-card-overlay p-4 position-absolute bottom-0 start-0 w-100 h-100 d-flex flex-column justify-content-end bg-gradient-navy">
+                                <span class="project-card-category badge bg-danger text-white fw-semibold text-uppercase text-xs mb-2 align-self-start shadow-sm" style="letter-spacing: 0.8px;">{{ $item['category'] }}</span>
+                                <h4 class="project-card-title text-white fw-bold my-1" style="font-size: 1.2rem;">{{ $item['title'] }}</h4>
+                                <div class="project-card-location text-white-50 small">
+                                    <i class="bi bi-geo-alt-fill text-danger me-1"></i> {{ $item['location'] }}, {{ $item['year'] }}
                                 </div>
-                                <a href="{{ route('public.projects.index') }}" class="btn btn-warning btn-sm align-self-start fw-semibold shadow">Detail Proyek</a>
                             </div>
                         </div>
                     </div>
@@ -334,33 +441,60 @@
     </div>
 </section>
 
-<!-- Clients Carousel Section -->
-<section id="clients" class="py-5 bg-white border-top border-bottom border-light">
-    <div class="container py-2">
-        <div class="text-center mb-4 reveal">
-            <span class="text-uppercase fw-bold text-warning" style="letter-spacing: 2px;">Klien Kami</span>
+<!-- Clients Section -->
+<section id="clients" class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="text-center mb-5 reveal">
+            <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px; font-size: 0.85rem;">MITRA KAMI</span>
+            <h2 class="mt-2 display-6 fw-bold text-navy">Klien Kami</h2>
+            <p class="text-muted mx-auto mt-3" style="max-width: 700px; font-size: 0.95rem;">Kami menjalin kemitraan erat dengan berbagai pengembang properti komersial, penyedia logistik, dan manufaktur berskala nasional.</p>
         </div>
-        <div class="logos-carousel-container reveal">
-            <div class="logos-carousel-track">
-                @forelse($clients as $client)
-                    <div class="logos-carousel-item">
-                        <img src="{{ asset('storage/' . $client->logo_path) }}" alt="{{ $client->name }}">
+
+        @php
+            $ourClients = [
+                ['name' => 'KSB', 'sub' => 'Pumps & Valves', 'color' => '#00529c', 'icon' => 'bi-gear-wide-connected', 'logo' => asset('images/client-ksb.png')],
+                ['name' => 'Surya Pertiwi', 'sub' => 'Sanitary & Building', 'color' => '#dc2626', 'icon' => 'bi-brightness-high-fill', 'logo' => asset('images/client-surya-pertiwi.png')],
+                ['name' => 'Telkomsel', 'sub' => 'Telecommunication', 'color' => '#ed1d24', 'icon' => 'bi-reception-4', 'logo' => asset('images/client-telkomsel.png')],
+                ['name' => 'ABB', 'sub' => 'Power & Automation', 'color' => '#e11d48', 'icon' => 'bi-lightning-charge-fill', 'logo' => asset('images/client-abb.png')],
+                ['name' => 'BNN', 'sub' => 'Republik Indonesia', 'color' => '#1e3a8a', 'icon' => 'bi-shield-shaded', 'logo' => asset('images/client-bnn.png')],
+                ['name' => 'Kimia Farma', 'sub' => 'Healthcare & Pharma', 'color' => '#0284c7', 'icon' => 'bi-capsule', 'logo' => asset('images/client-kimia-farma.png')],
+                ['name' => 'Telkom Landmark', 'sub' => 'Tower & Property', 'color' => '#dc2626', 'icon' => 'bi-building', 'logo' => asset('images/client-telkom-landmark.png')],
+                ['name' => 'UNAIR', 'sub' => 'Airlangga University', 'color' => '#d97706', 'icon' => 'bi-mortarboard-fill', 'logo' => asset('images/client-unair.jpg')],
+                ['name' => 'Mandiri Taspen', 'sub' => 'Bank Financial', 'color' => '#1e40af', 'icon' => 'bi-bank2', 'logo' => asset('images/client-mandiri-taspen.png')],
+                ['name' => 'KB Bukopin', 'sub' => 'Financial Group', 'color' => '#ca8a04', 'icon' => 'bi-wallet2', 'logo' => asset('images/client-kb-bukopin.png')],
+                ['name' => 'TOTO', 'sub' => 'Japan Quality', 'color' => '#0f172a', 'icon' => 'bi-droplet-fill', 'logo' => asset('images/client-toto.png')],
+                ['name' => 'Indonesia Sehat', 'sub' => 'Medical Center', 'color' => '#16a34a', 'icon' => 'bi-heart-pulse-fill', 'logo' => asset('images/client-indonesia-sehat.png')],
+                ['name' => 'ITS', 'sub' => 'Sepuluh Nopember', 'color' => '#0284c7', 'icon' => 'bi-diagram-3-fill', 'logo' => asset('images/client-its.png')],
+                ['name' => 'BKI', 'sub' => 'Classification Soc.', 'color' => '#0369a1', 'icon' => 'bi-anchor', 'logo' => asset('images/client-bki.png')],
+                ['name' => 'Angkasa Pura', 'sub' => 'Logistics Services', 'color' => '#0284c7', 'icon' => 'bi-airplane-engines-fill', 'logo' => asset('images/client-angkasa-pura.png')],
+                ['name' => 'Piranti', 'sub' => 'Engineering', 'color' => '#dc2626', 'icon' => 'bi-tools', 'logo' => asset('images/client-piranti.png')],
+                ['name' => 'Tiket.com', 'sub' => 'Travel & Ticketing', 'color' => '#1d6fe8', 'icon' => 'bi-airplane-fill', 'logo' => asset('images/client-tiket.png')],
+                ['name' => 'Mitra', 'sub' => 'Partner', 'color' => '#1e3a8a', 'icon' => 'bi-building', 'logo' => asset('images/client-new18.png')],
+                ['name' => 'Grounded Event', 'sub' => 'Coach Dr. Fahmi', 'color' => '#d4a800', 'icon' => 'bi-trophy-fill', 'logo' => asset('images/client-grounded-event.png')]
+            ];
+        @endphp
+
+        <div class="row row-cols-2 row-cols-sm-3 row-cols-md-4 row-cols-lg-4 g-4 justify-content-center">
+            @foreach($ourClients as $index => $client)
+                @php
+                    $delay = ($index % 8) * 0.05;
+                @endphp
+                <div class="col reveal" style="transition-delay: {{ $delay }}s;">
+                    <div class="client-brand-card">
+                        <div class="client-card-inner w-100 h-100 d-flex flex-column align-items-center justify-content-center p-3 text-center">
+                            @if(!empty($client['logo']))
+                                <img src="{{ $client['logo'] }}" alt="{{ $client['name'] }}" class="img-fluid client-logo-img">
+                            @else
+                                <div class="d-flex align-items-center justify-content-center rounded-3 mb-2 shadow-sm" style="width: 48px; height: 48px; background: {{ $client['color'] }}12; color: {{ $client['color'] }}; font-size: 1.4rem;">
+                                    <i class="bi {{ $client['icon'] }}"></i>
+                                </div>
+                                <span class="fw-bold text-navy" style="font-size: 0.95rem; letter-spacing: -0.2px; line-height: 1.2;">{{ $client['name'] }}</span>
+                                <span class="text-muted fw-semibold mt-1" style="font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.5px;">{{ $client['sub'] }}</span>
+                            @endif
+                        </div>
                     </div>
-                @empty
-                    <!-- Fallback logos -->
-                    @for($i = 1; $i <= 6; $i++)
-                        <div class="logos-carousel-item">
-                            <h5 class="fw-bold text-muted mb-0">PARTNER {{ $i }}</h5>
-                        </div>
-                    @endfor
-                    <!-- Repeat for endless animation track looping -->
-                    @for($i = 1; $i <= 6; $i++)
-                        <div class="logos-carousel-item">
-                            <h5 class="fw-bold text-muted mb-0">PARTNER {{ $i }}</h5>
-                        </div>
-                    @endfor
-                @endforelse
-            </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
@@ -370,8 +504,8 @@
     <div class="position-absolute top-0 start-0 w-100 h-100 hero-zoom-bg" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center; z-index: 1;"></div>
     <div class="cta-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(15, 45, 92, 0.9); z-index: 2;"></div>
     <div class="container py-5 text-center reveal" style="z-index: 3; position: relative;">
-        <h2 class="display-5 text-white fw-bold mb-3">Siap Membangun Gudang dan Struktur Baja Anda?</h2>
-        <p class="lead text-white-50 mb-4 mx-auto" style="max-width: 650px;">Diskusikan kebutuhan struktur baja industrial Anda sekarang dan dapatkan estimasi rancangan anggaran biaya (RAB) gratis.</p>
+        <h2 class="display-5 text-white fw-bold mb-3">Siap Mewujudkan Proyek Konstruksi Baja Anda?</h2>
+        <p class="lead text-white-50 mb-4 mx-auto" style="max-width: 650px;">Hubungi tim kami untuk solusi struktur baja yang kuat, efisien, dan siap diproduksi dengan standar konstruksi industri terbaik.</p>
         <a href="{{ route('public.quotation') }}" class="btn btn-warning btn-lg btn-ripple text-navy fw-semibold px-4 shadow">Mulai Request Quotation</a>
     </div>
 </section>

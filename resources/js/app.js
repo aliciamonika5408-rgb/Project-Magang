@@ -2,39 +2,68 @@ import './bootstrap';
 import 'bootstrap';
 
 document.addEventListener('DOMContentLoaded', () => {
-    // --- 1. Preloader Screen Hide ---
+    // --- 1. Preloader Screen Hide (Active ONLY on Initial Web Opening) ---
     const loader = document.getElementById('loading-screen');
     if (loader) {
-        window.addEventListener('load', () => {
-            loader.style.opacity = '0';
-            setTimeout(() => {
-                loader.style.display = 'none';
-            }, 600);
-        });
-        
-        // Fallback in case load event already fired or is slow
-        setTimeout(() => {
-            if (loader.style.opacity !== '0') {
-                loader.style.opacity = '0';
+        const hasVisited = sessionStorage.getItem('mpa_site_opened');
+
+        if (!hasVisited) {
+            // Initial Web Opening Animation (Cinematic 6s Opening Experience)
+            sessionStorage.setItem('mpa_site_opened', 'true');
+
+            const startTime = Date.now();
+            const minDuration = 6000; // 6 seconds minimum duration
+
+            const hideFullLoader = () => {
+                const elapsedTime = Date.now() - startTime;
+                const remainingTime = Math.max(0, minDuration - elapsedTime);
+
                 setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 600);
+                    loader.classList.add('preloader-fade-out');
+                    setTimeout(() => {
+                        loader.style.display = 'none';
+                    }, 800);
+                }, remainingTime);
+            };
+
+            if (document.readyState === 'complete') {
+                hideFullLoader();
+            } else {
+                window.addEventListener('load', hideFullLoader);
+                setTimeout(hideFullLoader, 8000);
             }
-        }, 1500);
+        } else {
+            // Disable preloader completely on all subsequent page clicks / menu navigation
+            loader.style.display = 'none';
+        }
+    }
+
+    // --- 1B. Hero Background Slider Loop (4 Real Project Photos) ---
+    const heroSlides = document.querySelectorAll('.hero-slide');
+    if (heroSlides.length > 1) {
+        let currentHeroIndex = 0;
+        setInterval(() => {
+            heroSlides[currentHeroIndex].classList.remove('active');
+            currentHeroIndex = (currentHeroIndex + 1) % heroSlides.length;
+            heroSlides[currentHeroIndex].classList.add('active');
+        }, 5000); // Transition every 5 seconds
     }
 
     // --- 2. Sticky Navbar Scroll Effect ---
     const navbar = document.querySelector('.custom-navbar');
     if (navbar) {
         window.addEventListener('scroll', () => {
+            navbar.style.border = 'none';
+            navbar.style.borderBottom = 'none';
+            navbar.style.outline = 'none';
             if (window.scrollY > 50) {
                 navbar.classList.add('shadow-lg');
-                navbar.style.padding = '0.5rem 0';
-                navbar.style.backgroundColor = 'rgba(15, 45, 92, 0.98)'; // Solid navy on scroll
+                navbar.style.padding = '0.55rem 0';
+                navbar.style.backgroundColor = '#0f172a'; // 100% Solid Opaque Dark Navy
             } else {
                 navbar.classList.remove('shadow-lg');
                 navbar.style.padding = '0.8rem 0';
-                navbar.style.backgroundColor = 'rgba(15, 45, 92, 0.85)'; // Transparent navy at top
+                navbar.style.backgroundColor = '#0f172a'; // 100% Solid Opaque Dark Navy
             }
         });
     }

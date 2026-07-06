@@ -4,8 +4,8 @@
 
 @section('content')
 <!-- Page Header -->
-<div class="bg-navy text-white py-5 position-relative overflow-hidden" style="background: linear-gradient(135deg, #0F2D5C 0%, #0a1f40 100%);">
-    <div class="container py-4 text-center">
+<div class="page-header-banner bg-navy text-white position-relative overflow-hidden d-flex align-items-center" style="background: linear-gradient(135deg, rgba(15, 45, 92, 0.85) 0%, rgba(10, 31, 64, 0.88) 100%), url('{{ asset('images/page-header-bg.jpg') }}') center/cover no-repeat !important; padding-top: 170px; padding-bottom: 160px; min-height: 400px;">
+    <div class="container text-center">
         <h1 class="display-4 fw-bold mb-2 text-white">Klien & Rekanan</h1>
         <p class="lead text-white-50 mx-auto" style="max-width: 600px;">
             Mitra kerja industri dan korporasi yang telah mempercayakan konstruksi bangunannya kepada kami.
@@ -43,7 +43,7 @@
 </div>
 
 <!-- Testimonials Carousel Section -->
-<div class="py-5 bg-white border-top">
+<div class="py-5 bg-white">
     <div class="container py-3">
         <div class="text-center mb-5 reveal">
             <span class="text-uppercase fw-bold text-warning" style="letter-spacing: 2px;">Testimoni</span>

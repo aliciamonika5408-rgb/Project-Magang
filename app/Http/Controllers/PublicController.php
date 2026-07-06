@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Service;
+use App\Models\OtherService;
 use App\Models\Project;
 use App\Models\Client;
+use App\Models\CompanySetting;
 use Illuminate\Http\Request;
 
 class PublicController extends Controller
@@ -12,23 +14,26 @@ class PublicController extends Controller
     public function home()
     {
         $services = Service::latest()->take(6)->get();
+        $otherServices = OtherService::latest()->get();
         $projects = Project::with('images')->latest()->take(6)->get();
         $clients = Client::latest()->get();
+        $stats = CompanySetting::pluck('value', 'key')->toArray();
 
-        return view('welcome', compact('services', 'projects', 'clients'));
+        return view('welcome', compact('services', 'otherServices', 'projects', 'clients', 'stats'));
     }
 
     public function services()
     {
         $services = Service::latest()->paginate(6);
-        return view('public.services.index', compact('services'));
+        $otherServices = OtherService::latest()->get();
+        return view('public.services.index', compact('services', 'otherServices'));
     }
 
     public function serviceDetail($slug)
     {
         $service = Service::where('slug', $slug)->firstOrFail();
-        $otherServices = Service::where('id', '!=', $service->id)->take(3)->get();
-        return view('public.services.detail', compact('service', 'otherServices'));
+        $relatedServices = Service::where('id', '!=', $service->id)->take(3)->get();
+        return view('public.services.detail', compact('service', 'relatedServices'));
     }
 
     public function projects(Request $request)
@@ -48,7 +53,7 @@ class PublicController extends Controller
             $query->where('category', $request->category);
         }
 
-        $projects = $query->latest()->paginate(9)->withQueryString();
+        $projects = $query->with('images')->latest()->paginate(9)->withQueryString();
         
         // Get all unique categories for filters
         $categories = Project::select('category')->distinct()->pluck('category');

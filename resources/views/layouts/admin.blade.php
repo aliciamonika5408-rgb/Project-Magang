@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,38 +27,33 @@
             <!-- Sidebar Panel -->
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block admin-sidebar collapse position-fixed top-0 start-0 h-100 p-0 shadow-lg" style="z-index: 1000; overflow-y: auto;">
                 <div class="sidebar-heading text-center py-4 bg-navy">
-                    <span class="fs-5 fw-bold text-white"><span style="color: #ffffff">Multi</span> <span style="color: var(--accent-orange)">Power</span> Admin</span>
+                    <span class="fs-5 fw-bold text-white"><i class="bi bi-house-door-fill text-danger me-2"></i><span style="color: #ffffff">Multi</span> <span style="color: var(--accent-orange)">Power</span> Admin</span>
                 </div>
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}" href="{{ route('dashboard') }}">
-                                <i class="bi bi-speedometer2 me-2"></i> Dashboard
+                                <i class="bi bi-speedometer2 me-2 text-warning"></i> Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ Route::is('admin.home-editor*') ? 'active' : '' }}" href="{{ route('admin.home-editor') }}">
+                                <i class="bi bi-house-door me-2"></i> Home
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('admin.services.*') ? 'active' : '' }}" href="{{ route('admin.services.index') }}">
-                                <i class="bi bi-building me-2"></i> Services (Layanan)
+                                <i class="bi bi-building me-2"></i> Services
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('admin.projects.*') ? 'active' : '' }}" href="{{ route('admin.projects.index') }}">
-                                <i class="bi bi-file-earmark-code me-2"></i> Projects (Showcase)
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is('admin.clients.*') ? 'active' : '' }}" href="{{ route('admin.clients.index') }}">
-                                <i class="bi bi-people me-2"></i> Clients (Logo Mitra)
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ Route::is('admin.quotations.*') ? 'active' : '' }}" href="{{ route('admin.quotations.index') }}">
-                                <i class="bi bi-file-earmark-spreadsheet me-2"></i> Quotations (Penawaran)
+                                <i class="bi bi-images me-2"></i> Projects
                             </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ Route::is('admin.contacts.*') ? 'active' : '' }}" href="{{ route('admin.contacts.index') }}">
-                                <i class="bi bi-chat-left-text me-2"></i> Inquiries (Pesan Masuk)
+                                <i class="bi bi-envelope me-2"></i> Contact
                             </a>
                         </li>
                         <li class="nav-item mt-4 border-top pt-3 border-secondary">

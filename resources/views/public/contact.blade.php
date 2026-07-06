@@ -4,8 +4,8 @@
 
 @section('content')
 <!-- Page Header -->
-<div class="bg-navy text-white py-5 position-relative overflow-hidden" style="background: linear-gradient(135deg, #0F2D5C 0%, #0a1f40 100%);">
-    <div class="container py-4 text-center">
+<div class="page-header-banner bg-navy text-white position-relative overflow-hidden d-flex align-items-center" style="background: linear-gradient(135deg, rgba(15, 45, 92, 0.85) 0%, rgba(10, 31, 64, 0.88) 100%), url('{{ asset('images/page-header-bg.jpg') }}') center/cover no-repeat !important; padding-top: 170px; padding-bottom: 160px; min-height: 400px;">
+    <div class="container text-center">
         <h1 class="display-4 fw-bold mb-2 text-white">Hubungi Kami</h1>
         <p class="lead text-white-50 mx-auto" style="max-width: 600px;">
             Hubungi tim estimator dan sales kami untuk menjadwalkan rapat survey lapangan atau presentasi produk.
@@ -20,26 +20,15 @@
             <!-- Left Info Block -->
             <div class="col-lg-5 reveal reveal-left">
                 <div class="card border rounded-4 p-4 shadow-sm bg-light">
-                    <h3 class="fw-bold text-navy mb-4">Informasi Kantor</h3>
-                    
-                    <div class="d-flex gap-3 mb-4">
-                        <div class="bg-navy text-white rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 shadow" style="width: 50px; height: 50px; font-size: 1.3rem;">
-                            <i class="bi bi-geo-alt-fill"></i>
-                        </div>
-                        <div>
-                            <h5 class="fw-bold text-navy mb-1">Alamat Utama</h5>
-                            <p class="text-muted mb-0">Kuningan Center Lantai 12, Jl. H. R. Rasuna Said, Jakarta Selatan, DKI Jakarta</p>
-                        </div>
-                    </div>
+                    <h3 class="fw-bold text-navy mb-4">Informasi Kontak</h3>
 
                     <div class="d-flex gap-3 mb-4">
                         <div class="bg-navy text-white rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 shadow" style="width: 50px; height: 50px; font-size: 1.3rem;">
                             <i class="bi bi-telephone-fill"></i>
                         </div>
                         <div>
-                            <h5 class="fw-bold text-navy mb-1">Telepon & WhatsApp</h5>
-                            <p class="text-muted mb-1">Office: +62 21 555 1234</p>
-                            <p class="text-muted mb-0">WhatsApp: +62 812 3456 7890</p>
+                            <h5 class="fw-bold text-navy mb-1">WhatsApp &amp; HP</h5>
+                            <p class="text-muted mb-0">+62 811-272-825</p>
                         </div>
                     </div>
 
@@ -49,8 +38,7 @@
                         </div>
                         <div>
                             <h5 class="fw-bold text-navy mb-1">Alamat Email</h5>
-                            <p class="text-muted mb-1">info@multipowerabadi.co.id</p>
-                            <p class="text-muted mb-0">tender@multipowerabadi.co.id</p>
+                            <p class="text-muted mb-0" style="word-break: break-all;">multipowerabadi@gmail.com</p>
                         </div>
                     </div>
 
@@ -60,8 +48,7 @@
                         </div>
                         <div>
                             <h5 class="fw-bold text-navy mb-1">Jam Operasional</h5>
-                            <p class="text-muted mb-1">Senin - Jumat: 08.00 - 17.00 WIB</p>
-                            <p class="text-muted mb-0">Sabtu: 09.00 - 13.00 WIB (Minggu Libur)</p>
+                            <p class="text-muted mb-0">24 Jam</p>
                         </div>
                     </div>
                 </div>
@@ -103,11 +90,6 @@
             </div>
         </div>
     </div>
-</div>
-
-<!-- Google Map Iframe Section -->
-<div class="w-100 reveal" style="height: 400px; border-top: 1px solid #eef2f5;">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.301334690858!2d106.82914101476906!3d-6.2239429954944985!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3fb7f92ff79%3A0x6ec0c62e5b721868!2sKuningan%20City!5e0!3m2!1sid!2sid!4v1659345791234!5m2!1sid!2sid" class="w-100 h-100 border-0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 </div>
 @endsection
 
