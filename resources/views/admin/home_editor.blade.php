@@ -117,8 +117,7 @@
                     <table class="table table-hover table-striped align-middle mb-0">
                         <thead class="table-light text-navy fw-bold text-xs uppercase">
                             <tr>
-                                <th class="ps-4" style="width: 70px;">Icon</th>
-                                <th>Judul Layanan</th>
+                                <th class="ps-4">Judul Layanan</th>
                                 <th>Deskripsi</th>
                                 <th class="text-end pe-4" style="width: 150px;">Aksi</th>
                             </tr>
@@ -126,12 +125,7 @@
                         <tbody>
                             @forelse($otherServices as $item)
                                 <tr>
-                                    <td class="ps-4">
-                                        <div class="bg-danger bg-opacity-10 text-danger rounded-3 d-inline-flex align-items-center justify-content-center" style="width: 42px; height: 42px; font-size: 1.2rem;">
-                                            <i class="bi {{ $item->icon }}"></i>
-                                        </div>
-                                    </td>
-                                    <td><strong class="text-navy">{{ $item->title }}</strong></td>
+                                    <td class="ps-4"><strong class="text-navy">{{ $item->title }}</strong></td>
                                     <td><p class="text-muted text-sm mb-0">{{ Str::limit($item->description, 100) }}</p></td>
                                     <td class="text-end pe-4">
                                         <div class="btn-group">
@@ -146,7 +140,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center py-4 text-muted">Belum ada layanan lainnya. Silakan tambahkan baru.</td>
+                                    <td colspan="3" class="text-center py-4 text-muted">Belum ada layanan lainnya. Silakan tambahkan baru.</td>
                                 </tr>
                             @endforelse
                         </tbody>
@@ -228,7 +222,6 @@
                             <tr>
                                 <th class="ps-4" style="width: 120px;">Logo</th>
                                 <th>Perusahaan / Mitra</th>
-                                <th>Website Link</th>
                                 <th class="text-end pe-4" style="width: 150px;">Aksi</th>
                             </tr>
                         </thead>
@@ -241,13 +234,6 @@
                                         </div>
                                     </td>
                                     <td><strong class="text-navy">{{ $client->name }}</strong></td>
-                                    <td>
-                                        @if($client->website_url)
-                                            <a href="{{ $client->website_url }}" target="_blank" class="text-decoration-none text-danger small"><i class="bi bi-box-arrow-up-right me-1"></i> {{ $client->website_url }}</a>
-                                        @else
-                                            <span class="text-muted text-xs">Tidak ada tautan</span>
-                                        @endif
-                                    </td>
                                     <td class="text-end pe-4">
                                         <div class="btn-group">
                                             <a href="{{ route('admin.clients.edit', $client->id) }}" class="btn btn-outline-warning btn-sm me-1 rounded"><i class="bi bi-pencil-square"></i> Edit</a>
@@ -261,7 +247,7 @@
                                 </tr>
                             @empty
                                 <tr>
-                                    <td colspan="4" class="text-center py-4 text-muted">Belum ada klien terdaftar. Silakan tambahkan klien baru.</td>
+                                    <td colspan="3" class="text-center py-4 text-muted">Belum ada klien terdaftar. Silakan tambahkan klien baru.</td>
                                 </tr>
                             @endforelse
                         </tbody>

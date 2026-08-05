@@ -32,8 +32,7 @@ class AdminProjectController extends Controller
             'year' => 'required|integer|min:2000|max:' . (date('Y') + 5),
             'client_name' => 'nullable|string|max:255',
             'budget' => 'nullable|string|max:255',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
-            'gallery.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:10240',
         ]);
 
         $validated['slug'] = Str::slug($request->title);
@@ -49,18 +48,7 @@ class AdminProjectController extends Controller
 
         $project = Project::create($validated);
 
-        // Upload Gallery Images if present
-        if ($request->hasFile('gallery')) {
-            foreach ($request->file('gallery') as $file) {
-                $galPath = $file->store('projects/gallery', 'public');
-                ProjectImage::create([
-                    'project_id' => $project->id,
-                    'image_path' => $galPath
-                ]);
-            }
-        }
-
-        return redirect()->route('admin.projects.index')->with('success', 'Proyek berhasil dibuat!');
+        return redirect()->route('admin.home-editor', ['tab' => 'projects'])->with('success', 'Proyek berhasil dibuat!');
     }
 
     public function edit(Project $project)
@@ -79,8 +67,7 @@ class AdminProjectController extends Controller
             'year' => 'required|integer|min:2000|max:' . (date('Y') + 5),
             'client_name' => 'nullable|string|max:255',
             'budget' => 'nullable|string|max:255',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
-            'gallery.*' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:10240',
         ]);
 
         if ($request->title !== $project->title) {
@@ -101,18 +88,7 @@ class AdminProjectController extends Controller
 
         $project->update($validated);
 
-        // Upload new gallery items
-        if ($request->hasFile('gallery')) {
-            foreach ($request->file('gallery') as $file) {
-                $galPath = $file->store('projects/gallery', 'public');
-                ProjectImage::create([
-                    'project_id' => $project->id,
-                    'image_path' => $galPath
-                ]);
-            }
-        }
-
-        return redirect()->route('admin.projects.index')->with('success', 'Proyek berhasil diupdate!');
+        return redirect()->route('admin.home-editor', ['tab' => 'projects'])->with('success', 'Proyek berhasil diupdate!');
     }
 
     public function destroy(Project $project)
@@ -131,7 +107,7 @@ class AdminProjectController extends Controller
 
         $project->delete();
 
-        return redirect()->route('admin.projects.index')->with('success', 'Proyek berhasil dihapus!');
+        return redirect()->route('admin.home-editor', ['tab' => 'projects'])->with('success', 'Proyek berhasil dihapus!');
     }
 
     // AJAX helper to delete specific project gallery item

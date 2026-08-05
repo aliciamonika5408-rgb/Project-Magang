@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Page Header -->
-<div class="page-header-banner bg-navy text-white position-relative overflow-hidden d-flex align-items-center" style="background: linear-gradient(135deg, rgba(15, 45, 92, 0.85) 0%, rgba(10, 31, 64, 0.88) 100%), url('{{ asset('images/page-header-bg.jpg') }}') center/cover no-repeat !important; padding-top: 170px; padding-bottom: 160px; min-height: 400px;">
+<div class="page-header-banner text-white position-relative overflow-hidden d-flex align-items-center" style="padding-top: 170px; padding-bottom: 160px; min-height: 400px;">
     <div class="container">
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
@@ -64,10 +64,6 @@
                     <div class="mb-3">
                         <span class="text-muted text-xs d-block mb-1">LOKASI</span>
                         <strong class="text-navy fs-6"><i class="bi bi-geo-alt-fill text-warning me-1"></i>{{ $project->location }}</strong>
-                    </div>
-                    <div class="mb-3">
-                        <span class="text-muted text-xs d-block mb-1">TAHUN RAMPUNG</span>
-                        <strong class="text-navy fs-6">{{ $project->year }}</strong>
                     </div>
                     @if($project->client_name)
                         <div class="mb-3">

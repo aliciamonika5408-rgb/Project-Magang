@@ -3,8 +3,18 @@
 @section('title', 'PT Multi Power Abadi - Konstruksi Baja, Gudang & Bangunan Industri')
 
 @section('content')
+<style>
+    .transition-hover-card {
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+    .transition-hover-card:hover {
+        transform: translateY(-6px) !important;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important;
+        border-color: rgba(255, 193, 7, 0.25) !important;
+    }
+</style>
 <!-- Hero Section -->
-<section id="home" class="hero-section overflow-hidden position-relative d-flex align-items-center justify-content-center" style="min-height: 85vh; padding-top: 60px; padding-bottom: 70px;">
+<section id="home" class="hero-section overflow-hidden position-relative d-flex align-items-center justify-content-center" style="min-height: 85vh;">
     <!-- Animated Moving Background Slider (4 Real Project Photos) -->
     <div class="hero-bg-slider position-absolute top-0 start-0 w-100 h-100" style="z-index: 1;">
         <div class="hero-slide active" style="background-image: url('{{ asset('images/hero-1.jpg') }}');"></div>
@@ -13,27 +23,30 @@
         <div class="hero-slide" style="background-image: url('{{ asset('images/hero-4.png') }}');"></div>
     </div>
     <!-- Gradient Overlay for Contrast -->
-    <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100" style="z-index: 2; background: linear-gradient(135deg, rgba(11, 19, 41, 0.88) 0%, rgba(15, 23, 42, 0.78) 50%, rgba(13, 0, 0, 0.85) 100%);"></div>
+    <div class="hero-overlay position-absolute top-0 start-0 w-100 h-100" style="z-index: 2; background: linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(15, 23, 42, 0.82) 50%, rgba(13, 0, 0, 0.88) 100%);"></div>
     <!-- Animated moving red light glow -->
     <div class="hero-red-light"></div>
     <!-- Dust particles canvas -->
     <canvas id="hero-particles"></canvas>
-    <!-- Red diagonal accent -->
-    <div class="position-absolute" style="z-index: 3; top: 0; right: 0; width: 40%; height: 100%; background: linear-gradient(135deg, transparent 40%, rgba(220, 38, 38, 0.12) 100%); clip-path: polygon(30% 0, 100% 0, 100% 100%, 0% 100%);"></div>
-    <div class="position-absolute" style="z-index: 3; top: 0; right: -5%; width: 25%; height: 100%; background: rgba(180, 10, 10, 0.55); clip-path: polygon(60% 0, 100% 0, 100% 100%, 30% 100%);"></div>
-    <div class="container hero-content text-center position-relative" style="z-index: 5; margin-top: -25px;">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 col-xl-9 text-center">
-                <h1 class="hero-title display-4 text-white fw-bold mb-3" style="letter-spacing: -1px;">
+
+    <div class="container hero-content text-start position-relative" style="z-index: 5; margin-top: -25px;">
+        <div class="row justify-content-start">
+            <div class="col-lg-10 col-xl-9 text-start">
+                <span class="badge bg-danger text-white px-3 py-2 rounded-pill text-uppercase fw-semibold mb-3 d-inline-block shadow-sm" style="letter-spacing: 1.5px; font-size: 0.82rem;">
+                    <i class="bi bi-shield-fill-check me-1"></i> Kontraktor Konstruksi Baja Terpercaya
+                </span>
+                <h1 class="hero-title display-5 text-white fw-bold mb-4" style="letter-spacing: -1px; line-height: 1.25;">
                     Konstruksi Baja Profesional<br class="d-none d-md-block">
-                    untuk Gudang, Pabrik, dan Infrastruktur Industri
+                    Untuk Gudang, Pabrik, dan Bangunan Industri
                 </h1>
-                <p class="hero-subtitle lead text-white-50 mb-4 mx-auto" style="max-width: 720px;">
-                    PT. Multi Power Abadi menghadirkan layanan konstruksi baja premium, fabrikasi presisi, dan steel erection untuk proyek industri yang menuntut kekuatan, keamanan, dan penyerahan tepat waktu.
-                </p>
-                <div class="d-flex flex-wrap justify-content-center gap-3 reveal" style="transition-delay: 0.5s;">
-                    <a href="{{ route('public.quotation') }}" class="btn btn-accent btn-lg btn-ripple shadow-lg px-4 text-white" style="transition: transform 0.3s ease, box-shadow 0.3s ease;">Request Quotation</a>
-                    <a href="{{ route('public.projects.index') }}" class="btn btn-outline-white btn-lg btn-ripple px-4">Lihat Portfolio</a>
+
+                <div class="d-flex flex-wrap justify-content-start gap-3 reveal" style="transition-delay: 0.5s;">
+                    <a href="{{ route('public.quotation') }}" class="btn btn-accent btn-lg btn-ripple shadow-lg px-4 text-white fw-semibold" style="transition: transform 0.3s ease, box-shadow 0.3s ease;">
+                        <i class="bi bi-file-earmark-text-fill me-2"></i>Minta Penawaran Proyek
+                    </a>
+                    <a href="https://wa.me/62811272825" target="_blank" rel="noopener noreferrer" class="btn btn-outline-white btn-lg btn-ripple px-4 fw-semibold">
+                        <i class="bi bi-whatsapp me-2"></i>Konsultasi Gratis
+                    </a>
                 </div>
             </div>
         </div>
@@ -42,7 +55,7 @@
     <div class="position-absolute bottom-0 start-50 translate-middle-x mb-4 text-center reveal" style="z-index: 7; transition-delay: 0.8s;">
         <a href="#stats" class="text-white text-decoration-none">
             <div class="d-flex flex-column align-items-center">
-                <span class="text-white-50 text-uppercase small mb-2" style="letter-spacing: 2px;">Scroll Down</span>
+                <span class="text-white-50 text-uppercase small mb-2" style="letter-spacing: 2px;">Jelajahi Solusi</span>
                 <i class="bi bi-chevron-down fs-4 animate-bounce"></i>
             </div>
         </a>
@@ -50,35 +63,33 @@
 </section>
 
 <!-- Statistics Grid — Premium Dark -->
-<section id="stats" class="stats-premium py-5">
-    <div class="container py-3">
-        <div class="row g-0">
-            <div class="col-6 col-md-3 reveal" style="transition-delay:0.1s;">
-                <div class="stat-premium-card">
-                    <div class="stat-premium-icon"><i class="bi bi-calendar-check"></i></div>
-                    <div class="stat-premium-number stat-number" data-target="{{ $stats['years_experience'] ?? '15' }}" data-suffix="+">0</div>
-                    <div class="stat-premium-label">Tahun Pengalaman</div>
+<section id="stats" class="py-0 position-relative stat-section" style="z-index: 10; margin-top: -55px; margin-bottom: 25px;">
+    <div class="container">
+        <div class="stats-premium rounded-4 p-3 shadow-lg">
+            <div class="row g-0">
+                <div class="col-6 col-md-3 reveal" style="transition-delay:0.1s;">
+                    <div class="stat-premium-card">
+                        <div class="stat-premium-number stat-number" data-target="12" data-suffix="+">0</div>
+                        <div class="stat-premium-label">Tahun Pengalaman</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3 reveal" style="transition-delay:0.2s;">
-                <div class="stat-premium-card">
-                    <div class="stat-premium-icon"><i class="bi bi-building-check"></i></div>
-                    <div class="stat-premium-number stat-number" data-target="{{ $stats['projects_completed'] ?? '150' }}" data-suffix="+">0</div>
-                    <div class="stat-premium-label">Proyek Selesai</div>
+                <div class="col-6 col-md-3 reveal" style="transition-delay:0.2s;">
+                    <div class="stat-premium-card">
+                        <div class="stat-premium-number stat-number" data-target="1250" data-suffix="+">0</div>
+                        <div class="stat-premium-label">Proyek Terbangun</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3 reveal" style="transition-delay:0.3s;">
-                <div class="stat-premium-card">
-                    <div class="stat-premium-icon"><i class="bi bi-people-fill"></i></div>
-                    <div class="stat-premium-number stat-number" data-target="{{ $stats['experts_count'] ?? '50' }}" data-suffix="+">0</div>
-                    <div class="stat-premium-label">Tenaga Ahli</div>
+                <div class="col-6 col-md-3 reveal" style="transition-delay:0.3s;">
+                    <div class="stat-premium-card">
+                        <div class="stat-premium-number stat-number" data-target="32" data-suffix="">0</div>
+                        <div class="stat-premium-label">Kota di Indonesia</div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3 reveal" style="transition-delay:0.4s;">
-                <div class="stat-premium-card">
-                    <div class="stat-premium-icon"><i class="bi bi-shield-fill-check"></i></div>
-                    <div class="stat-premium-number">{{ $stats['work_accidents'] ?? '0' }}</div>
-                    <div class="stat-premium-label">Kecelakaan Kerja</div>
+                <div class="col-6 col-md-3 reveal" style="transition-delay:0.4s;">
+                    <div class="stat-premium-card">
+                        <div class="stat-premium-number stat-number" data-target="100" data-suffix="%">0</div>
+                        <div class="stat-premium-label">Komitmen Mutu &amp; K3</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -91,50 +102,42 @@
     <div class="container py-4">
         <div class="row align-items-center g-5">
             <div class="col-lg-6 reveal reveal-left">
-                <div class="position-relative overflow-hidden rounded-4 shadow-lg" style="min-height: 350px; background: linear-gradient(135deg, #0b1329 0%, #1e293b 100%);">
-                    <!-- Industrial Steel Construction SVG Graphic -->
-                    <svg width="100%" height="350" viewBox="0 0 600 350" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <defs>
-                            <pattern id="aboutGrid" width="30" height="30" patternUnits="userSpaceOnUse">
-                                <path d="M 30 0 L 0 0 0 30" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
-                            </pattern>
-                            <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="1">
-                                <stop offset="0%" stop-color="#dc2626"/>
-                                <stop offset="100%" stop-color="#991b1b"/>
-                            </linearGradient>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#aboutGrid)"/>
-                        <!-- Diagonal Construction Beams -->
-                        <path d="M 40 320 L 200 70 L 360 320 M 200 70 L 560 320" stroke="url(#beamGrad)" stroke-width="10" stroke-linecap="round"/>
-                        <path d="M 90 240 H 480 M 140 160 H 330" stroke="rgba(255,255,255,0.18)" stroke-width="6"/>
-                        <!-- Structural Pillars & Crane Wire -->
-                        <path d="M 40 320 V 140 M 200 320 V 70 M 360 320 V 140 M 560 320 V 140" stroke="#0284c7" stroke-width="6" opacity="0.7"/>
-                        <path d="M 200 70 L 460 30 M 460 30 V 190" stroke="#eab308" stroke-width="5" stroke-dasharray="8 6"/>
-                        <circle cx="460" cy="190" r="12" fill="#eab308"/>
-                    </svg>
+                <div class="position-relative overflow-hidden rounded-4 shadow-lg h-100" style="min-height: 420px;">
+                    <!-- Background Image -->
+                    <img src="{{ asset('images/layanan-baja-bg.jpg') }}" class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover" alt="Layanan Konstruksi Baja PT Multi Power Abadi" style="z-index: 1;">
+                    <!-- Subtle Dark Gradient Overlay -->
+                    <div class="position-absolute top-0 start-0 w-100 h-100" style="z-index: 2; background: linear-gradient(135deg, rgba(15, 23, 42, 0.35) 0%, rgba(15, 23, 42, 0.75) 100%);"></div>
+                    
                     <!-- Floating Badge -->
-                    <div class="position-absolute bottom-0 start-0 bg-danger text-white p-4 rounded-4 m-3 shadow-lg float-effect">
-                        <h4 class="fw-bold mb-0">{{ $stats['years_experience'] ?? '15' }}+ Tahun</h4>
-                        <p class="mb-0 text-sm">Menghadirkan Struktur Baja Andalan</p>
+                    <div class="position-absolute bottom-0 start-0 bg-danger text-white p-4 rounded-4 m-3 shadow-lg float-effect" style="z-index: 3;">
+                        <h4 class="fw-bold mb-0">12+ Tahun Pengalaman</h4>
+                        <p class="mb-0 text-sm">Menghadirkan Struktur Baja Industri Berstandar SNI</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6 reveal reveal-right" style="transition-delay: 0.2s;">
-                <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px;">Layanan Konstruksi Baja</span>
-                <h2 class="mt-2 mb-4 display-6 fw-bold text-navy">Solusi Struktur Baja Terintegrasi Untuk Industri</h2>
-                <p class="text-muted mb-4 lead">PT. Multi Power Abadi melayani proyek konstruksi baja untuk gudang, pabrik, hangar, dan bangunan industri dengan pendekatan teknis yang matang dan eksekusi lapangan terkontrol.</p>
-                <p class="text-muted mb-4">Kami menggabungkan desain struktural, fabrikasi workshop, serta steel erection lapangan menjadi satu layanan end-to-end yang menjamin kualitas, kekuatan, dan ketahanan jangka panjang.</p>
+                <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px; font-size: 0.85rem;">TENTANG KAMI</span>
+                <h2 class="mt-2 mb-4 display-6 fw-bold text-navy">Spesialis Konstruksi Baja &amp; Bangunan Industri Terpercaya</h2>
+                <p class="text-muted mb-3 lead" style="font-size: 1.05rem;">PT. Multi Power Abadi adalah perusahaan kontraktor konstruksi baja yang berfokus pada pembangunan gudang, pabrik, hanggar, dan struktur industri dengan tingkat akurasi rekayasa tinggi.</p>
+                <p class="text-muted mb-4">Kami menggabungkan perencanaan rekayasa struktural yang matang, fasilitas fabrikasi workshop mandiri, serta pengawasan *steel erection* di lapangan secara disiplin. Komitmen utama kami adalah memberikan struktur bangunan yang kokoh, tepat waktu, efisien biaya, dan bergaransi penuh demi melindungi investasi jangka panjang Anda.</p>
+                
                 <div class="row g-3">
                     <div class="col-sm-6">
-                        <div class="d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-danger fs-5"></i>
-                            <span class="fw-semibold text-navy">Desain Struktur Baja</span>
+                        <div class="d-flex align-items-center gap-2 p-2 rounded-3 bg-white border shadow-sm">
+                            <i class="bi bi-shield-check text-danger fs-4"></i>
+                            <div>
+                                <h6 class="fw-bold text-navy mb-0" style="font-size: 0.9rem;">Material Standar SNI</h6>
+                                <small class="text-muted">Kualitas Teruji &amp; Tersertifikasi</small>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="d-flex align-items-center gap-2">
-                            <i class="bi bi-check-circle-fill text-danger fs-5"></i>
-                            <span class="fw-semibold text-navy">Fabrikasi & Erection</span>
+                        <div class="d-flex align-items-center gap-2 p-2 rounded-3 bg-white border shadow-sm">
+                            <i class="bi bi-clock-history text-danger fs-4"></i>
+                            <div>
+                                <h6 class="fw-bold text-navy mb-0" style="font-size: 0.9rem;">Pengerjaan Tepat Waktu</h6>
+                                <small class="text-muted">Manajemen Proyek Terkontrol</small>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -147,69 +150,89 @@
 <section id="services" class="py-5 bg-white">
     <div class="container py-4">
         <div class="text-center mb-5 reveal">
-            <span class="text-uppercase fw-bold text-warning" style="letter-spacing: 2px;">Layanan Kami</span>
-            <h2 class="mt-2 display-6 fw-bold text-navy">Solusi Konstruksi Baja End-to-End</h2>
-            <p class="text-muted mx-auto" style="max-width: 600px;">Layanan struktur baja lengkap dari desain, fabrikasi, steel erection, hingga serah terima untuk gudang dan fasilitas industri.</p>
+            <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px; font-size: 0.85rem;">LAYANAN UTAMA</span>
+            <h2 class="mt-2 display-6 fw-bold text-navy">Solusi Konstruksi Baja Terintegrasi</h2>
+            <p class="text-muted mx-auto" style="max-width: 680px;">Setiap layanan dirancang untuk memberikan ketahanan struktur maksimal, efisiensi waktu pembangunan, dan keamanan operasional fasilitas bisnis Anda.</p>
         </div>
 
+        @php
+            $constructionServices = [
+                [
+                    'title' => 'Konstruksi Gudang Baja',
+                    'desc' => 'Desain & pembangunan gudang bentang lebar tanpa tiang tengah, mengoptimalkan kapasitas penyimpanan dan kelancaran logistik.',
+                    'icon' => 'bi-building-fill',
+                    'img' => asset('images/konstruksi-gudang-baja.jpg')
+                ],
+                [
+                    'title' => 'Konstruksi Pabrik Baja',
+                    'desc' => 'Struktur pabrik industri heavy-duty yang dirancang khusus menahan beban mesin produksi dan crane operasional secara aman.',
+                    'icon' => 'bi-building-gear',
+                    'img' => asset('images/konstruksi-pabrik-baja.jpg')
+                ],
+                [
+                    'title' => 'Konstruksi Hanggar Baja',
+                    'desc' => 'Konstruksi bentang ekstra lebar dengan sistem rangka baja kokoh yang tahan terhadap angin dan cuaca ekstrem.',
+                    'icon' => 'bi-airplane',
+                    'img' => asset('images/konstruksi-hanggar-baja.jpg')
+                ],
+                [
+                    'title' => 'Konstruksi Workshop Baja',
+                    'desc' => 'Fasilitas kerja dan bengkel industri dengan efisiensi tata ruang tinggi, pencahayaan alami, dan sirkulasi udara optimal.',
+                    'icon' => 'bi-tools',
+                    'img' => asset('images/konstruksi-workshop-baja.jpg')
+                ],
+                [
+                    'title' => 'Konstruksi Gedung Baja',
+                    'desc' => 'Sistem struktur baja multilantai yang cepat dibangun, fleksibel untuk ekspansi, serta tahan beban gempa.',
+                    'icon' => 'bi-building',
+                    'img' => asset('images/konstruksi-struktur-gedung-baja.png')
+                ],
+                [
+                    'title' => 'Konstruksi Mezzanine Baja',
+                    'desc' => 'Solusi cepat menambah luas area kerja vertikal tanpa merusak struktur utama bangunan gudang atau pabrik.',
+                    'icon' => 'bi-layers-half',
+                    'img' => asset('images/konstruksi-mezzanine-baja.png')
+                ],
+                [
+                    'title' => 'Rangka Atap Baja Bentang Lebar',
+                    'desc' => 'Pemasangan rangka atap baja bervolume besar yang tahan korosi, kuat menahan beban, dan minim biaya perawatan.',
+                    'icon' => 'bi-house-gear-fill',
+                    'img' => asset('images/konstruksi-rangka-atap-baja.jpg')
+                ],
+                [
+                    'title' => 'Renovasi & Perkuatan Struktur',
+                    'desc' => 'Peningkatan kapasitas beban dan perkuatan struktur baja eksisting agar sesuai dengan kebutuhan operasional baru.',
+                    'icon' => 'bi-shield-fill-check',
+                    'img' => 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=600&auto=format&fit=crop'
+                ]
+            ];
+        @endphp
+
         <div class="row g-4">
-            @forelse($services as $index => $service)
-                <div class="col-md-6 col-lg-4 reveal" style="transition-delay: {{ 0.1 * ($index + 1) }}s;">
-                    <div class="service-card h-100 border rounded-4 shadow-sm overflow-hidden bg-white">
-                        <div class="card-img-wrapper" style="height: 220px; overflow: hidden; position: relative;">
-                            <img src="{{ $service->image ? asset('storage/' . $service->image) : 'https://images.unsplash.com/photo-1581094288338-2314dddb7ecc?q=80&w=600&auto=format&fit=crop' }}" class="w-100 h-100 object-fit-cover transition-zoom" alt="{{ $service->title }}">
+            @foreach($constructionServices as $index => $item)
+                <div class="col-md-6 col-lg-3 reveal" style="transition-delay: {{ 0.08 * ($index + 1) }}s;">
+                    <div class="service-card h-100 border rounded-4 shadow-sm overflow-hidden bg-white d-flex flex-column">
+                        <div class="card-img-wrapper" style="height: 180px; overflow: hidden; position: relative;">
+                            <img src="{{ $item['img'] }}" class="w-100 h-100 object-fit-cover transition-zoom" alt="{{ $item['title'] }}">
                         </div>
-                        <div class="card-body p-4 position-relative d-flex flex-column justify-content-between">
+                        <div class="card-body p-4 position-relative d-flex flex-column flex-grow-1 justify-content-between">
                             <div>
                                 <div class="service-icon-box mb-3">
-                                    <i class="bi {{ $service->icon ?? 'bi-building' }}"></i>
+                                    <i class="bi {{ $item['icon'] }}"></i>
                                 </div>
-                                <h4 class="card-title fw-bold text-navy mb-2">{{ $service->title }}</h4>
-                                <p class="text-muted mb-3">{{ Str::limit($service->description, 110) }}</p>
-                            </div>
-                            <div class="mt-2">
-                                <a href="{{ route('public.services.detail', $service->slug) }}" class="btn-service-more">
-                                    <span>Selengkapnya</span> <i class="bi bi-arrow-right ms-1"></i>
-                                </a>
+                                <h5 class="card-title fw-bold text-navy mb-2 fs-6" style="line-height: 1.4;">{{ $item['title'] }}</h5>
+                                <p class="text-muted text-sm mb-0" style="font-size: 0.85rem; line-height: 1.5;">{{ $item['desc'] }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            @empty
-                <!-- Fallback static services if DB is empty -->
-                @php
-                    $staticServices = [
-                        ['title' => 'Konstruksi Gudang', 'desc' => 'Desain & pembangunan gudang skala kecil hingga logistik enterprise dengan bentang lebar tanpa tiang tengah.', 'icon' => 'bi-building-fill-add', 'img' => asset('images/gudang-pabrik.jpg')],
-                        ['title' => 'Konstruksi Baja', 'desc' => 'Struktur baja berat untuk pabrik, gedung bertingkat, hangar pesawat, dengan kestabilan seismik optimal.', 'icon' => 'bi-cone-striped', 'img' => asset('images/konstruksi-baja.jpg')],
-                        ['title' => 'Fabrikasi Baja', 'desc' => 'Pemotongan, pembentukan, pengeboran, dan pengelasan plat & profil baja di workshop tersertifikasi milik kami.', 'icon' => 'bi-tools', 'img' => asset('images/fabrikasi-baja.jpg')],
-                        ['title' => 'Steel Erection', 'desc' => 'Pemasangan komponen struktur baja di lapangan secara cepat, akurat, aman dengan tim crane bersertifikat.', 'icon' => 'bi-wrench-adjustable', 'img' => asset('images/steel-erection.jpg')],
-                        ['title' => 'Bangunan Industri', 'desc' => 'Pembangunan pabrik kimia, pengolahan makanan, workshop industri lengkap dengan utilitas kelistrikan & ducting.', 'icon' => 'bi-industry', 'img' => asset('images/bangunan-industri.jpg')]
-                    ];
-                @endphp
-                @foreach($staticServices as $index => $item)
-                    <div class="col-md-6 col-lg-4 reveal" style="transition-delay: {{ 0.1 * ($index + 1) }}s;">
-                        <div class="service-card h-100 border rounded-4 shadow-sm overflow-hidden bg-white">
-                            <div class="card-img-wrapper" style="height: 220px; overflow: hidden; position: relative;">
-                                <img src="{{ $item['img'] }}" class="w-100 h-100 object-fit-cover" alt="{{ $item['title'] }}">
-                            </div>
-                            <div class="card-body p-4 position-relative d-flex flex-column justify-content-between">
-                                <div>
-                                    <div class="service-icon-box mb-3">
-                                        <i class="bi {{ $item['icon'] }}"></i>
-                                    </div>
-                                    <h4 class="card-title fw-bold text-navy mb-2">{{ $item['title'] }}</h4>
-                                    <p class="text-muted mb-3">{{ $item['desc'] }}</p>
-                                </div>
-                                <div class="mt-2">
-                                    <a href="{{ route('public.services.index') }}" class="btn-service-more">
-                                        <span>Selengkapnya</span> <i class="bi bi-arrow-right ms-1"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            @endforelse
+            @endforeach
+        </div>
+
+        <div class="text-center mt-5 reveal">
+            <a href="{{ route('public.services.index') }}" class="btn btn-accent btn-ripple px-4 py-2.5 text-white fw-semibold shadow-sm">
+                Lihat Seluruh Layanan Konstruksi <i class="bi bi-arrow-right ms-1"></i>
+            </a>
         </div>
     </div>
 </section>
@@ -218,9 +241,9 @@
 <section id="other-services" class="py-5 bg-light">
     <div class="container py-4">
         <div class="text-center mb-5 reveal">
-            <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px; font-size: 0.85rem;">LAYANAN DUKUNGAN</span>
-            <h2 class="mt-2 display-6 fw-bold text-navy">Layanan Lainnya</h2>
-            <p class="text-muted mx-auto mt-3" style="max-width: 720px; font-size: 0.95rem;">Selain sebagai kontraktor baja, PT. Multi Power Abadi juga menyediakan berbagai layanan konstruksi dan interior untuk memenuhi kebutuhan proyek residensial maupun komersial.</p>
+            <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px; font-size: 0.85rem;">SOLUSI PENDUKUNG</span>
+            <h2 class="mt-2 display-6 fw-bold text-navy">Layanan Sipil, Interior &amp; Arsitektur</h2>
+            <p class="text-muted mx-auto mt-3" style="max-width: 720px; font-size: 0.95rem;">Untuk memberikan kemudahan One-Stop Solution, kami juga melayani pengerjaan sipil, mekanikal-elektrikal, serta penataan interior komersial secara profesional.</p>
         </div>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 mt-2">
@@ -243,10 +266,10 @@
             @empty
                 @php
                     $staticOtherServices = [
-                        ['title' => 'Konstruksi Renovasi Residensial & Komersial', 'desc' => 'Melayani renovasi rumah, gedung perkantoran, ruko, toko, restoran, dan bangunan komersial dengan hasil yang berkualitas dan sesuai kebutuhan klien.', 'icon' => 'bi-house-gear-fill'],
-                        ['title' => 'Design Build Arsitektur & Interior', 'desc' => 'Menyediakan layanan desain arsitektur, desain interior, hingga pembangunan secara menyeluruh dalam satu proses yang terintegrasi.', 'icon' => 'bi-vector-pen'],
-                        ['title' => 'Pekerjaan Sipil, Mekanikal, Elektrikal & Plumbing (CMEP)', 'desc' => 'Menangani pekerjaan sipil, instalasi mekanikal, elektrikal, plumbing, serta sistem pendukung bangunan sesuai standar konstruksi.', 'icon' => 'bi-lightning-charge-fill'],
-                        ['title' => 'Workshop Furniture & Custom Interior', 'desc' => 'Memproduksi berbagai furniture custom, kitchen set, office furniture, partisi, serta kebutuhan interior sesuai desain dan spesifikasi proyek.', 'icon' => 'bi-hammer']
+                        ['title' => 'Renovasi Residensial & Komersial', 'desc' => 'Solusi renovasi gedung kantor, ruko, pabrik, dan fasilitas bisnis dengan pengerjaan rapi serta biaya efisien.', 'icon' => 'bi-house-gear-fill'],
+                        ['title' => 'Design & Build Arsitektur', 'desc' => 'Layanan terpadu dari konsep desain arsitektur hingga eksekusi fisik bangunan dalam satu pintu.', 'icon' => 'bi-vector-pen'],
+                        ['title' => 'Pekerjaan Sipil & MEP', 'desc' => 'Instalasi mekanikal, elektrikal, plumbing, dan perkerasan lantai beton sesuai regulasi keselamatan.', 'icon' => 'bi-lightning-charge-fill'],
+                        ['title' => 'Workshop Custom Interior', 'desc' => 'Produksi furniture custom, partisi kantor, dan interior industri berstandar kualitas tinggi.', 'icon' => 'bi-hammer']
                     ];
                 @endphp
                 @foreach($staticOtherServices as $index => $service)
@@ -269,94 +292,74 @@
 <section class="py-5 bg-light">
     <div class="container py-4">
         <div class="text-center mb-5 reveal">
-            <span class="text-uppercase fw-bold text-warning" style="letter-spacing: 2px;">Kelebihan Kami</span>
-            <h2 class="mt-2 display-6 fw-bold text-navy">Mengapa PT Multi Power Abadi?</h2>
-            <p class="text-muted mx-auto" style="max-width: 600px;">Kami memberikan jaminan standar konstruksi tertinggi untuk menjamin investasi industri Anda terlindungi.</p>
+            <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px; font-size: 0.85rem;">KEUNGGULAN KAMI</span>
+            <h2 class="mt-2 display-6 fw-bold text-navy">Mengapa Memilih PT Multi Power Abadi?</h2>
+            <p class="text-muted mx-auto" style="max-width: 650px;">Alasan utama mengapa pengembang properti, penyedia logistik, dan perusahaan manufaktur mempercayakan proyek struktur baja mereka kepada kami.</p>
         </div>
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.1s;">
-                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card">
-                    <i class="bi bi-patch-check-fill text-warning fs-2 mb-3 d-block"></i>
-                    <h4 class="fw-bold text-navy mb-2">Sangat Berpengalaman</h4>
-                    <p class="text-muted mb-0">Telah dipercaya menyelesaikan ratusan hangar, pabrik, gudang logistik bentang lebar, dan tangki baja.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.2s;">
-                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card">
-                    <i class="bi bi-people-fill text-warning fs-2 mb-3 d-block"></i>
-                    <h4 class="fw-bold text-navy mb-2">Tim Profesional</h4>
-                    <p class="text-muted mb-0">Memiliki arsitek struktur baja & pengawas proyek berpengalaman bersertifikasi keahlian K3 Konstruksi.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.3s;">
-                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card">
-                    <i class="bi bi-layers-fill text-warning fs-2 mb-3 d-block"></i>
-                    <h4 class="fw-bold text-navy mb-2">Material Berkualitas</h4>
-                    <p class="text-muted mb-0">Hanya menggunakan baja canai panas, wf, H-Beam berstandar sertifikasi uji tarik SNI resmi.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.4s;">
-                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card">
-                    <i class="bi bi-alarm-fill text-warning fs-2 mb-3 d-block"></i>
-                    <h4 class="fw-bold text-navy mb-2">Tepat Waktu</h4>
-                    <p class="text-muted mb-0">Manajemen rantai pasok fabrikasi mandiri membuat proyek berjalan efisien bebas hambatan.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.5s;">
-                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card">
-                    <i class="bi bi-shield-fill-exclamation text-warning fs-2 mb-3 d-block"></i>
-                    <h4 class="fw-bold text-navy mb-2">Keselamatan Kerja (K3)</h4>
-                    <p class="text-muted mb-0">Penerapan standar operasional ketat untuk mewujudkan Zero Accident di seluruh area kerja.</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.6s;">
-                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card">
-                    <i class="bi bi-award-fill text-warning fs-2 mb-3 d-block"></i>
-                    <h4 class="fw-bold text-navy mb-2">Garansi Kualitas</h4>
-                    <p class="text-muted mb-0">Memberikan jaminan masa pemeliharaan pasca serah terima untuk memastikan struktur baja sempurna.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Our Process Section -->
-<section id="process" class="py-5 bg-white">
-    <div class="container py-4">
-        <div class="text-center mb-5 reveal">
-            <span class="text-uppercase fw-bold text-warning" style="letter-spacing: 2px;">Tahapan Kerja</span>
-            <h2 class="mt-2 display-6 fw-bold text-navy">Proses Pengerjaan Sistematis</h2>
-            <p class="text-muted mx-auto" style="max-width: 600px;">Kami mengikuti alur kerja transparan untuk memastikan kepuasan klien dari awal hingga akhir.</p>
-        </div>
-
-        <div class="process-timeline reveal">
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step-item">
-                        <div class="process-icon-wrapper">1</div>
-                        <h5 class="process-step-title">Konsultasi</h5>
-                        <p class="process-step-desc">Mendiskusikan kebutuhan struktur gudang, bentang, tinggi, dan kebutuhan utilitas klien.</p>
+        <div class="row g-4 mt-2">
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.1s; margin-top: 25px;">
+                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card position-relative" style="padding-top: 2.5rem !important;">
+                    <div class="why-choose-icon-box rounded-circle shadow d-flex align-items-center justify-content-center position-absolute" style="width: 50px; height: 50px; top: 0; left: 24px; transform: translateY(-50%); z-index: 10; border: 3px solid #ffffff; background-color: #dc2626; color: #ffffff;">
+                        <i class="bi bi-patch-check-fill fs-4"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold text-navy mb-2 fs-5">Pengalaman Teruji</h4>
+                        <p class="text-muted mb-0 text-sm" style="line-height: 1.6;">Berpengalaman lebih dari 12 tahun menyelesaikan ratusan gudang logistik, pabrik, dan gedung baja di berbagai kota Indonesia.</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step-item">
-                        <div class="process-icon-wrapper">2</div>
-                        <h5 class="process-step-title">Survey Lokasi</h5>
-                        <p class="process-step-desc">Melakukan survey topografi tanah, struktur tanah, dan akses jalan crane proyek.</p>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.2s; margin-top: 25px;">
+                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card position-relative" style="padding-top: 2.5rem !important;">
+                    <div class="why-choose-icon-box rounded-circle shadow d-flex align-items-center justify-content-center position-absolute" style="width: 50px; height: 50px; top: 0; left: 24px; transform: translateY(-50%); z-index: 10; border: 3px solid #ffffff; background-color: #dc2626; color: #ffffff;">
+                        <i class="bi bi-people-fill fs-4"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold text-navy mb-2 fs-5">Tenaga Ahli Berpengalaman</h4>
+                        <p class="text-muted mb-0 text-sm" style="line-height: 1.6;">Tim engineer struktur, arsitek, dan pengawas proyek terlatih yang mengutamakan ketelitian teknis dan regulasi K3.</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step-item">
-                        <div class="process-icon-wrapper">3</div>
-                        <h5 class="process-step-title">Perencanaan & Estimasi</h5>
-                        <p class="process-step-desc">Membuat visualisasi desain 3D, kalkulasi kekuatan pembebanan (SAP2000), dan Rencana Anggaran Biaya.</p>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.3s; margin-top: 25px;">
+                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card position-relative" style="padding-top: 2.5rem !important;">
+                    <div class="why-choose-icon-box rounded-circle shadow d-flex align-items-center justify-content-center position-absolute" style="width: 50px; height: 50px; top: 0; left: 24px; transform: translateY(-50%); z-index: 10; border: 3px solid #ffffff; background-color: #dc2626; color: #ffffff;">
+                        <i class="bi bi-layers-fill fs-4"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold text-navy mb-2 fs-5">Material Standar SNI</h4>
+                        <p class="text-muted mb-0 text-sm" style="line-height: 1.6;">Hanya menggunakan material baja WF, H-Beam, dan plat baja resmi bergaransi sertifikat uji tarik terpercaya.</p>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="process-step-item">
-                        <div class="process-icon-wrapper">4</div>
-                        <h5 class="process-step-title">Fabrikasi & Instalasi</h5>
-                        <p class="process-step-desc">Melakukan pemotongan plat baja di workshop lalu melakukan pengiriman dan steel erection di lokasi.</p>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.4s; margin-top: 25px;">
+                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card position-relative" style="padding-top: 2.5rem !important;">
+                    <div class="why-choose-icon-box rounded-circle shadow d-flex align-items-center justify-content-center position-absolute" style="width: 50px; height: 50px; top: 0; left: 24px; transform: translateY(-50%); z-index: 10; border: 3px solid #ffffff; background-color: #dc2626; color: #ffffff;">
+                        <i class="bi bi-alarm-fill fs-4"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold text-navy mb-2 fs-5">Pengerjaan Tepat Waktu</h4>
+                        <p class="text-muted mb-0 text-sm" style="line-height: 1.6;">Fasilitas fabrikasi mandiri dan rantai pasok terintegrasi memastikan pengerjaan proyek tepat waktu tanpa *delay*.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.5s; margin-top: 25px;">
+                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card position-relative" style="padding-top: 2.5rem !important;">
+                    <div class="why-choose-icon-box rounded-circle shadow d-flex align-items-center justify-content-center position-absolute" style="width: 50px; height: 50px; top: 0; left: 24px; transform: translateY(-50%); z-index: 10; border: 3px solid #ffffff; background-color: #dc2626; color: #ffffff;">
+                        <i class="bi bi-shield-fill-exclamation fs-4"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold text-navy mb-2 fs-5">Standar Keselamatan K3</h4>
+                        <p class="text-muted mb-0 text-sm" style="line-height: 1.6;">Penerapan Sistem Manajemen K3 ketat untuk mencapai *Zero Accident* dan menjaga keamanan seluruh pekerja lapangan.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4 reveal" style="transition-delay: 0.6s; margin-top: 25px;">
+                <div class="bg-white p-4 rounded-4 shadow-sm border h-100 transition-hover-card position-relative" style="padding-top: 2.5rem !important;">
+                    <div class="why-choose-icon-box rounded-circle shadow d-flex align-items-center justify-content-center position-absolute" style="width: 50px; height: 50px; top: 0; left: 24px; transform: translateY(-50%); z-index: 10; border: 3px solid #ffffff; background-color: #dc2626; color: #ffffff;">
+                        <i class="bi bi-award-fill fs-4"></i>
+                    </div>
+                    <div>
+                        <h4 class="fw-bold text-navy mb-2 fs-5">Garansi &amp; Layanan Purna Jual</h4>
+                        <p class="text-muted mb-0 text-sm" style="line-height: 1.6;">Jaminan garansi pemeliharaan pasca serah terima untuk memastikan kepuasan dan ketenangan investasi Anda.</p>
                     </div>
                 </div>
             </div>
@@ -369,28 +372,36 @@
     <div class="container py-4">
         <div class="d-flex flex-wrap justify-content-between align-items-end mb-5 reveal">
             <div>
-                <span class="text-uppercase fw-bold text-warning" style="letter-spacing: 2px;">Portfolio</span>
-                <h2 class="mt-2 display-6 fw-bold text-navy">Dokumentasi Proyek</h2>
+                <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px; font-size: 0.85rem;">REKAM JEJAK PROYEK</span>
+                <h2 class="mt-2 display-6 fw-bold text-navy">Dokumentasi Proyek Sukses</h2>
+                <p class="text-muted mb-0" style="max-width: 600px;">Bukti keandalan struktur baja dan kepuasan klien di berbagai lokasi industri.</p>
             </div>
             <!-- Dynamic project filter buttons -->
-            <div class="filter-btn-group d-flex gap-2 mt-3 mt-lg-0">
-                <button type="button" class="btn filter-btn active" data-filter="all">Semua</button>
-                <button type="button" class="btn filter-btn" data-filter="Gudang">Gudang</button>
-                <button type="button" class="btn filter-btn" data-filter="Baja">Konstruksi Baja</button>
-                <button type="button" class="btn filter-btn" data-filter="Industri">Industri</button>
+            <div class="filter-btn-group d-flex flex-wrap gap-2 mt-3 mt-lg-0">
+                <button type="button" class="btn filter-btn active" data-filter="all">Semua Proyek</button>
+                <button type="button" class="btn filter-btn" data-filter="Mezzanine">Mezzanine</button>
+                <button type="button" class="btn filter-btn" data-filter="Gedung">Gedung Industri</button>
             </div>
         </div>
 
         <div class="row g-4">
             @forelse($projects as $project)
                 <div class="col-md-6 col-lg-4 project-showcase-item reveal" data-category="{{ $project->category }}">
-                    <div class="project-card border rounded-4 overflow-hidden position-relative shadow-sm" style="height: 290px;">
-                        <img src="{{ $project->image ? asset('storage/' . $project->image) : asset('images/gudang-pabrik.jpg') }}" class="w-100 h-100 object-fit-cover transition-zoom" alt="{{ $project->title }}">
+                    <div class="project-card project-card-clickable border rounded-4 overflow-hidden position-relative shadow-sm"
+                         style="height: 290px; cursor: pointer;"
+                         data-title="{{ $project->title }}"
+                         data-category="{{ $project->category }}"
+                         data-location="{{ $project->location }}"
+                         data-year="{{ $project->year }}"
+                         data-description="{{ $project->description ?: 'Proyek konstruksi baja berkualitas tinggi yang diselesaikan tepat waktu oleh PT Multi Power Abadi.' }}"
+                         data-image="{{ $project->image ? asset('storage/' . $project->image) : ($project->category === 'Mezzanine' ? asset('images/konstruksi-mezzanine-kosmetika.jpg') : asset('images/gudang-pabrik.jpg')) }}"
+                         onclick="openProjectPopup(this)">
+                        <img src="{{ $project->image ? asset('storage/' . $project->image) : ($project->category === 'Mezzanine' ? asset('images/konstruksi-mezzanine-kosmetika.jpg') : asset('images/gudang-pabrik.jpg')) }}" class="w-100 h-100 object-fit-cover transition-zoom" alt="{{ $project->title }}">
                         <div class="project-card-overlay p-4 position-absolute bottom-0 start-0 w-100 h-100 d-flex flex-column justify-content-end bg-gradient-navy">
                             <span class="project-card-category badge bg-danger text-white fw-semibold text-uppercase text-xs mb-2 align-self-start shadow-sm" style="letter-spacing: 0.8px;">{{ $project->category }}</span>
-                            <h4 class="project-card-title text-white fw-bold my-1" style="font-size: 1.2rem;">{{ $project->title }}</h4>
+                            <h4 class="project-card-title text-white fw-bold my-1" style="font-size: 1.15rem;">{{ $project->title }}</h4>
                             <div class="project-card-location text-white-50 small">
-                                <i class="bi bi-geo-alt-fill text-danger me-1"></i> {{ $project->location }}, {{ $project->year }}
+                                <i class="bi bi-geo-alt-fill text-danger me-1"></i> {{ $project->location }}
                             </div>
                         </div>
                     </div>
@@ -400,37 +411,48 @@
                 @php
                     $staticProjects = [
                         [
-                            'title' => 'Gudang Logistik Modern',
-                            'category' => 'Gudang',
-                            'location' => 'Bekasi, Jawa Barat',
-                            'year' => 2025,
-                            'image' => asset('images/gudang-pabrik.jpg')
-                        ],
-                        [
-                            'title' => 'Hangar Pemeliharaan Pesawat',
-                            'category' => 'Konstruksi Baja',
-                            'location' => 'Tangerang, Banten',
+                            'title' => 'Konstruksi Mezzanine Industri – PT Kosmetika Global Indonesia',
+                            'category' => 'Mezzanine',
+                            'location' => 'Rungkut Industri III, Surabaya',
                             'year' => 2024,
-                            'image' => asset('images/steel-erection.jpg')
+                            'description' => 'Pembangunan struktur mezzanine baja heavy-duty untuk perluasan kapasitas ruang operasional pabrik kosmetik tanpa mengganggu alur kerja eksisting.',
+                            'image' => asset('images/konstruksi-mezzanine-kosmetika.jpg')
                         ],
                         [
-                            'title' => 'Pabrik Pengolahan Sawit',
-                            'category' => 'Bangunan Industri',
-                            'location' => 'Pekanbaru, Riau',
-                            'year' => 2023,
-                            'image' => asset('images/bangunan-industri.jpg')
+                            'title' => 'Konstruksi Mezzanine Logistik – PT Hore Indonesia Sehat',
+                            'category' => 'Mezzanine',
+                            'location' => 'Kawasan Industri Driyorejo, Gresik',
+                            'year' => 2025,
+                            'description' => 'Pekerjaan rangka baja mezzanine untuk optimalisasi ruang penyimpanan gudang medis berstandar higienitas tinggi.',
+                            'image' => asset('images/konstruksi-mezzanine-hore.jpg')
+                        ],
+                        [
+                            'title' => 'Gedung Kantor Rangka Baja – PT Telekomunikasi Indonesia',
+                            'category' => 'Gedung',
+                            'location' => 'Margorejo Indah, Surabaya',
+                            'year' => 2025,
+                            'description' => 'Pembangunan struktur gedung perkantoran bertingkat berbasis rangka baja kuat, presisi, dan selesai tepat waktu.',
+                            'image' => asset('images/pembangunan-gedung-telkom.jpg')
                         ]
                     ];
                 @endphp
                 @foreach($staticProjects as $item)
                     <div class="col-md-6 col-lg-4 project-showcase-item reveal" data-category="{{ $item['category'] }}">
-                        <div class="project-card border rounded-4 overflow-hidden position-relative shadow-sm" style="height: 280px;">
+                        <div class="project-card project-card-clickable border rounded-4 overflow-hidden position-relative shadow-sm"
+                             style="height: 280px; cursor: pointer;"
+                             data-title="{{ $item['title'] }}"
+                             data-category="{{ $item['category'] }}"
+                             data-location="{{ $item['location'] }}"
+                             data-year="{{ $item['year'] }}"
+                             data-description="{{ $item['description'] }}"
+                             data-image="{{ $item['image'] }}"
+                             onclick="openProjectPopup(this)">
                             <img src="{{ $item['image'] }}" class="w-100 h-100 object-fit-cover transition-zoom" alt="{{ $item['title'] }}">
                             <div class="project-card-overlay p-4 position-absolute bottom-0 start-0 w-100 h-100 d-flex flex-column justify-content-end bg-gradient-navy">
                                 <span class="project-card-category badge bg-danger text-white fw-semibold text-uppercase text-xs mb-2 align-self-start shadow-sm" style="letter-spacing: 0.8px;">{{ $item['category'] }}</span>
-                                <h4 class="project-card-title text-white fw-bold my-1" style="font-size: 1.2rem;">{{ $item['title'] }}</h4>
+                                <h4 class="project-card-title text-white fw-bold my-1" style="font-size: 1.15rem;">{{ $item['title'] }}</h4>
                                 <div class="project-card-location text-white-50 small">
-                                    <i class="bi bi-geo-alt-fill text-danger me-1"></i> {{ $item['location'] }}, {{ $item['year'] }}
+                                    <i class="bi bi-geo-alt-fill text-danger me-1"></i> {{ $item['location'] }}
                                 </div>
                             </div>
                         </div>
@@ -446,8 +468,8 @@
     <div class="container py-5">
         <div class="text-center mb-5 reveal">
             <span class="text-uppercase fw-bold text-danger" style="letter-spacing: 2px; font-size: 0.85rem;">MITRA KAMI</span>
-            <h2 class="mt-2 display-6 fw-bold text-navy">Klien Kami</h2>
-            <p class="text-muted mx-auto mt-3" style="max-width: 700px; font-size: 0.95rem;">Kami menjalin kemitraan erat dengan berbagai pengembang properti komersial, penyedia logistik, dan manufaktur berskala nasional.</p>
+            <h2 class="mt-2 display-6 fw-bold text-navy">Dipercaya Oleh Perusahaan Terkemuka</h2>
+            <p class="text-muted mx-auto mt-3" style="max-width: 700px; font-size: 0.95rem;">Kami bangga dapat menjalin hubungan kemitraan jangka panjang dengan berbagai BUMN, penyedia logistik, pengembang properti, dan manufaktur skala nasional.</p>
         </div>
 
         @php
@@ -499,14 +521,28 @@
     </div>
 </section>
 
-<!-- Call to Action Section -->
-<section class="cta-section py-5 overflow-hidden position-relative">
-    <div class="position-absolute top-0 start-0 w-100 h-100 hero-zoom-bg" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center; z-index: 1;"></div>
-    <div class="cta-overlay position-absolute top-0 start-0 w-100 h-100" style="background: rgba(15, 45, 92, 0.9); z-index: 2;"></div>
-    <div class="container py-5 text-center reveal" style="z-index: 3; position: relative;">
-        <h2 class="display-5 text-white fw-bold mb-3">Siap Mewujudkan Proyek Konstruksi Baja Anda?</h2>
-        <p class="lead text-white-50 mb-4 mx-auto" style="max-width: 650px;">Hubungi tim kami untuk solusi struktur baja yang kuat, efisien, dan siap diproduksi dengan standar konstruksi industri terbaik.</p>
-        <a href="{{ route('public.quotation') }}" class="btn btn-warning btn-lg btn-ripple text-navy fw-semibold px-4 shadow">Mulai Request Quotation</a>
+<!-- Call to Action Section — Floating Card -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="position-relative overflow-hidden rounded-4 shadow-lg text-center p-4 p-md-5 reveal" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1600&auto=format&fit=crop'); background-size: cover; background-position: center; z-index: 1;">
+            <!-- Dark Overlay inside the card -->
+            <div class="position-absolute top-0 start-0 w-100 h-100" style="background: rgba(15, 23, 42, 0.94); z-index: 2;"></div>
+            
+            <!-- Content -->
+            <div class="position-relative py-2 py-md-3" style="z-index: 3;">
+                <span class="badge bg-danger text-white px-3 py-2 rounded-pill text-uppercase mb-3 d-inline-block shadow-sm text-wrap" style="letter-spacing: 1px; max-width: 100%;">KONSULTASI GRATIS &amp; PENAWARAN HARGA</span>
+                <h2 class="fs-2 text-white fw-bold mb-3 mx-auto" style="max-width: 680px; line-height: 1.35;">Siap Mewujudkan Proyek Bangunan &amp; Gudang Baja Anda?</h2>
+                <p class="lead text-white-50 mb-4 mx-auto" style="max-width: 700px; font-size: 1.05rem; line-height: 1.6;">Dapatkan konsultasi gratis teknis rekayasa struktur dan estimasi penawaran harga terbaik dari tim engineer ahli PT Multi Power Abadi.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3">
+                    <a href="{{ route('public.quotation') }}" class="btn btn-accent btn-lg btn-ripple text-white fw-semibold px-4 shadow">
+                        <i class="bi bi-file-earmark-spreadsheet-fill me-2"></i>Minta Penawaran Proyek
+                    </a>
+                    <a href="https://wa.me/62811272825" target="_blank" rel="noopener noreferrer" class="btn btn-outline-white btn-lg btn-ripple px-4 fw-semibold">
+                        <i class="bi bi-whatsapp me-2"></i>Hubungi Tim Kami (WhatsApp)
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 

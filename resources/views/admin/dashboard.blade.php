@@ -5,7 +5,7 @@
 
 @section('admin-content')
 <!-- Quick Actions Banner -->
-<div class="card border-0 shadow-sm rounded-4 mb-4 bg-navy text-white overflow-hidden position-relative">
+<div class="card border-0 shadow-sm rounded-4 mb-4 bg-danger text-white overflow-hidden position-relative">
     <div class="card-body p-4 p-md-5 position-relative" style="z-index: 2;">
         <div class="row align-items-center">
             <div class="col-lg-7">
@@ -106,7 +106,7 @@
     <!-- Recent Quotations -->
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm rounded-4">
-            <div class="card-header bg-navy py-3 d-flex justify-content-between align-items-center rounded-top-4">
+            <div class="card-header bg-danger py-3 d-flex justify-content-between align-items-center rounded-top-4">
                 <h5 class="card-title text-white mb-0 fw-semibold fs-6"><i class="bi bi-file-earmark-spreadsheet-fill me-2 text-warning"></i>Request Quotation Terbaru</h5>
                 <a href="{{ route('admin.home-editor', ['tab' => 'quotations']) }}" class="btn btn-xs btn-outline-light">Kelola di Home Editor</a>
             </div>
@@ -159,7 +159,7 @@
     <!-- Recent Messages -->
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm rounded-4">
-            <div class="card-header bg-navy py-3 d-flex justify-content-between align-items-center rounded-top-4">
+            <div class="card-header bg-danger py-3 d-flex justify-content-between align-items-center rounded-top-4">
                 <h5 class="card-title text-white mb-0 fw-semibold fs-6"><i class="bi bi-chat-left-text-fill me-2 text-warning"></i>Pesan Masuk Contact</h5>
                 <a href="{{ route('admin.contacts.index') }}" class="btn btn-xs btn-outline-light">Lihat Semua</a>
             </div>

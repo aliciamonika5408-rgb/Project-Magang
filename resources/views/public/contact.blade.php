@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Page Header -->
-<div class="page-header-banner bg-navy text-white position-relative overflow-hidden d-flex align-items-center" style="background: linear-gradient(135deg, rgba(15, 45, 92, 0.85) 0%, rgba(10, 31, 64, 0.88) 100%), url('{{ asset('images/page-header-bg.jpg') }}') center/cover no-repeat !important; padding-top: 170px; padding-bottom: 160px; min-height: 400px;">
+<div class="page-header-banner text-white position-relative overflow-hidden d-flex align-items-center" style="padding-top: 170px; padding-bottom: 160px; min-height: 400px;">
     <div class="container text-center">
         <h1 class="display-4 fw-bold mb-2 text-white">Hubungi Kami</h1>
         <p class="lead text-white-50 mx-auto" style="max-width: 600px;">
@@ -22,28 +22,28 @@
                 <div class="card border rounded-4 p-4 shadow-sm bg-light">
                     <h3 class="fw-bold text-navy mb-4">Informasi Kontak</h3>
 
-                    <div class="d-flex gap-3 mb-4">
-                        <div class="bg-navy text-white rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 shadow" style="width: 50px; height: 50px; font-size: 1.3rem;">
-                            <i class="bi bi-telephone-fill"></i>
+                    <a href="https://wa.me/62811272825" target="_blank" rel="noopener noreferrer" class="d-flex gap-3 mb-4 text-decoration-none hover-grow transition-smooth">
+                        <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 shadow-sm" style="width: 50px; height: 50px; font-size: 1.3rem; background-color: #dcfce7; color: #16a34a;">
+                            <i class="bi bi-whatsapp"></i>
                         </div>
                         <div>
-                            <h5 class="fw-bold text-navy mb-1">WhatsApp &amp; HP</h5>
+                            <h5 class="fw-bold text-navy mb-1">WhatsApp</h5>
                             <p class="text-muted mb-0">+62 811-272-825</p>
                         </div>
-                    </div>
+                    </a>
 
-                    <div class="d-flex gap-3 mb-4">
-                        <div class="bg-navy text-white rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 shadow" style="width: 50px; height: 50px; font-size: 1.3rem;">
+                    <a href="mailto:multipowerabadi@gmail.com" class="d-flex gap-3 mb-4 text-decoration-none hover-grow transition-smooth">
+                        <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 shadow-sm" style="width: 50px; height: 50px; font-size: 1.3rem; background-color: #fee2e2; color: #dc2626;">
                             <i class="bi bi-envelope-fill"></i>
                         </div>
                         <div>
                             <h5 class="fw-bold text-navy mb-1">Alamat Email</h5>
                             <p class="text-muted mb-0" style="word-break: break-all;">multipowerabadi@gmail.com</p>
                         </div>
-                    </div>
+                    </a>
 
                     <div class="d-flex gap-3">
-                        <div class="bg-navy text-white rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 shadow" style="width: 50px; height: 50px; font-size: 1.3rem;">
+                        <div class="rounded-3 d-flex align-items-center justify-content-center flex-shrink-0 shadow-sm" style="width: 50px; height: 50px; font-size: 1.3rem; background-color: #fef3c7; color: #d97706;">
                             <i class="bi bi-clock-fill"></i>
                         </div>
                         <div>

@@ -4,6 +4,12 @@
 @section('page-title', 'Daftar Layanan Konstruksi')
 
 @section('admin-content')
+<div class="mb-4">
+    <a href="{{ route('admin.home-editor') }}" class="btn btn-outline-secondary fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i> Kembali ke Home Editor
+    </a>
+</div>
+
 <div class="card border-0 shadow-sm rounded-3">
     <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
         <h5 class="card-title text-navy mb-0 fw-bold"><i class="bi bi-building me-2 text-warning"></i>Daftar Layanan</h5>

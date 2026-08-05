@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-mpa-favicon.png') }}">
 
     <title>@yield('title', 'PT Multi Power Abadi - Engineering & Construction')</title>
 
@@ -19,7 +20,63 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     @yield('styles')
+
+    <!-- Custom Navigation Styles (White text with white animated underline) -->
+    <style>
+        .custom-navbar .nav-link {
+            color: #ffffff !important;
+            position: relative !important;
+            text-shadow: none !important;
+        }
+        
+        .custom-navbar .nav-link::after {
+            content: "" !important;
+            display: block !important;
+            position: absolute !important;
+            width: 0 !important;
+            height: 2px !important;
+            bottom: 0px !important;
+            left: 50% !important;
+            background-color: #ffffff !important;
+            transition: all 0.3s ease !important;
+            transform: translateX(-50%) !important;
+            border: none !important;
+        }
+        
+        .custom-navbar .nav-link:hover::after,
+        .custom-navbar .nav-link.active::after {
+            width: calc(100% - 2rem) !important;
+        }
+
+        /* Faded page header banner red background overlay */
+        .page-header-banner {
+            background: linear-gradient(135deg, rgba(220, 38, 38, 0.25) 0%, rgba(15, 23, 42, 0.75) 100%), url('/images/page-header-bg.jpg') center/cover no-repeat !important;
+        }
+
+        /* Navbar background color override (Bright Red globally) */
+        .custom-navbar,
+        .custom-navbar.shadow-lg,
+        .custom-navbar.scrolled,
+        #mainNavbar {
+            background-color: #dc2626 !important;
+            background: #dc2626 !important;
+        }
+    </style>
     
+    <!-- Instant Theme Initialization Script (Prevents FOUC) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('mpa_theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
+
     <!-- Instant Preloader Blocker for Page Navigation -->
     <script>
         if (sessionStorage.getItem('mpa_site_opened')) {
@@ -46,13 +103,19 @@
     <nav class="navbar navbar-expand-lg custom-navbar fixed-top border-0" id="mainNavbar" style="border: none !important; outline: none !important;">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center me-lg-4" href="{{ route('home') }}">
-                <span class="fw-bold text-white mb-0" style="font-size: 1.35rem; letter-spacing: 2px; color: #ffffff !important; text-shadow: 0 2px 8px rgba(0,0,0,0.4);">PT. MULTI POWER ABADI</span>
+                <img src="{{ asset('images/logo-mpa-premium.png') }}" alt="Logo" class="logo-navbar-img">
             </a>
-            <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="bi bi-list fs-1"></i>
-            </button>
+            <div class="d-flex align-items-center gap-2">
+                <!-- Theme Toggle Button (Immediately Visible on Mobile Header Top Corner) -->
+                <button type="button" class="theme-toggle-btn d-lg-none" title="Ganti Mode Tampilan" aria-label="Toggle theme">
+                    <i class="bi bi-moon-fill"></i>
+                </button>
+                <button class="navbar-toggler border-0 text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="bi bi-list fs-1"></i>
+                </button>
+            </div>
             <div class="collapse navbar-collapse border-0" id="navbarNav" style="border: none !important; outline: none !important;">
-                <ul class="navbar-nav ms-auto align-items-center">
+                <ul class="navbar-nav ms-auto align-items-start align-items-lg-center">
                     <li class="nav-item">
                         <a class="nav-link {{ Route::is('home') ? 'active' : '' }}" href="{{ route('home') }}">Home</a>
                     </li>
@@ -66,18 +129,15 @@
                     <li class="nav-item">
                         <a class="nav-link {{ Route::is('public.contact') ? 'active' : '' }}" href="{{ route('public.contact') }}">Contact</a>
                     </li>
-                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
+                    <li class="nav-item ms-lg-3 mt-3 mt-lg-0 d-flex align-items-center gap-2">
+                        <button type="button" class="theme-toggle-btn d-none d-lg-inline-flex" title="Ganti Mode Tampilan" aria-label="Toggle theme">
+                            <i class="bi bi-moon-fill"></i>
+                        </button>
                         <a href="{{ route('public.quotation') }}" class="btn btn-accent btn-ripple text-white px-4 py-2 shadow fw-semibold">
                             Request Quotation
                         </a>
                     </li>
-                    @if (Route::has('login'))
-                        @auth
-                            <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-                                <a href="{{ route('dashboard') }}" class="btn btn-outline-white btn-sm text-white py-2">Dashboard</a>
-                            </li>
-                        @endauth
-                    @endif
+
                 </ul>
             </div>
         </div>
@@ -89,6 +149,11 @@
     </div>
 
 
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/62811272825" target="_blank" rel="noopener noreferrer" class="floating-whatsapp" title="Hubungi Kami di WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
 
     <!-- Back to Top Button -->
     <button id="back-to-top-btn" class="back-to-top" title="Kembali ke Atas">
@@ -116,24 +181,21 @@
                         </div>
                         <h5 class="footer-heading">PT. Multi Power Abadi</h5>
                         <p class="footer-desc">
-                            Spesialis Engineering, Fabrikasi Baja, Konstruksi Gudang &amp; Steel Erection. Berkomitmen menghadirkan standar bangunan industri terbaik di Indonesia.
+                            Kontraktor Spesialis Engineering, Fabrikasi Workshop Mandiri, &amp; Steel Erection Berstandar Mutu SNI. Mitra Tepercaya Pembangunan Gudang, Pabrik, &amp; Bangunan Industri Masa Depan.
                         </p>
                         <!-- Social Icons -->
                         <div class="footer-socials mt-4">
-                            <a href="#" class="footer-social-btn" aria-label="Instagram" title="Instagram">
+                            <a href="https://www.instagram.com/multipowerabadi/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Instagram" title="Instagram">
                                 <i class="bi bi-instagram"></i>
                             </a>
-                            <a href="#" class="footer-social-btn" aria-label="TikTok" title="TikTok">
+                            <a href="https://www.tiktok.com/@multipowerabadi" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="TikTok" title="TikTok">
                                 <i class="bi bi-tiktok"></i>
                             </a>
-                            <a href="#" class="footer-social-btn" aria-label="Facebook" title="Facebook">
+                            <a href="https://www.facebook.com/people/PT-MULTI-POWER-ABADI/100067681392488/" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="Facebook" title="Facebook">
                                 <i class="bi bi-facebook"></i>
                             </a>
-                            <a href="#" class="footer-social-btn" aria-label="YouTube" title="YouTube">
+                            <a href="https://www.youtube.com/@RuangMPA" target="_blank" rel="noopener noreferrer" class="footer-social-btn" aria-label="YouTube" title="YouTube">
                                 <i class="bi bi-youtube"></i>
-                            </a>
-                            <a href="#" class="footer-social-btn" aria-label="LinkedIn" title="LinkedIn">
-                                <i class="bi bi-linkedin"></i>
                             </a>
                         </div>
                     </div>
@@ -149,7 +211,7 @@
                         <div class="footer-divider"></div>
                         <ul class="footer-contact-list">
                             <li>
-                                <a href="https://wa.me/628112728250" target="_blank" rel="noopener noreferrer" class="footer-contact-item">
+                                <a href="https://wa.me/62811272825" target="_blank" rel="noopener noreferrer" class="footer-contact-item">
                                     <span class="footer-contact-icon footer-icon-wa">
                                         <i class="bi bi-whatsapp"></i>
                                     </span>
@@ -402,5 +464,71 @@
                 showToast("{{ session('error') }}", false);
             });
         @endif
+    </script>
+
+<!-- Project Detail Popup Modal -->
+<div id="project-popup" class="project-popup-backdrop" onclick="if(event.target===this)closeProjectPopup()">
+    <div class="project-popup-card">
+        <button type="button" class="project-popup-close" onclick="closeProjectPopup()" title="Tutup (ESC)">&times;</button>
+        <div class="project-popup-scroll">
+            <div class="project-popup-img-wrap">
+                <img id="popup-img" src="" alt="Proyek" class="project-popup-img">
+                <span id="popup-category" class="project-popup-badge"></span>
+            </div>
+            <div class="project-popup-body">
+                <h3 id="popup-title" class="project-popup-title"></h3>
+                <div id="popup-meta" class="project-popup-meta"></div>
+                <p id="popup-desc" class="project-popup-desc"></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.project-popup-backdrop{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(10,20,40,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:99999;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;padding:1.5rem}
+.project-popup-backdrop.show{opacity:1;visibility:visible}
+.project-popup-card{background:#fff;border-radius:20px;overflow:hidden;max-width:520px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.4);transform:scale(.9) translateY(20px);transition:transform .35s cubic-bezier(.2,.9,.3,1.2),opacity .3s;opacity:0;position:relative;max-height:88vh;display:flex;flex-direction:column}
+.project-popup-backdrop.show .project-popup-card{transform:scale(1) translateY(0);opacity:1}
+.project-popup-close{position:absolute;top:12px;right:12px;z-index:10;background:rgba(0,0,0,.55);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:1.4rem;line-height:1;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
+.project-popup-close:hover{background:#dc2626;transform:rotate(90deg) scale(1.1)}
+.project-popup-scroll{overflow-y:auto;max-height:88vh}
+.project-popup-img-wrap{position:relative;width:100%;height:280px;overflow:hidden}
+.project-popup-img{width:100%;height:100%;object-fit:cover;display:block}
+.project-popup-badge{position:absolute;bottom:16px;left:16px;background:#dc2626;color:#fff;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:5px 14px;border-radius:20px}
+.project-popup-body{padding:1.5rem 1.8rem 2rem}
+.project-popup-title{font-size:1.35rem;font-weight:800;color:#0f2d5c;margin:0 0 .6rem}
+.project-popup-meta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;font-size:.85rem;color:#6b7280}
+.project-popup-meta i{color:#dc2626;margin-right:3px}
+.project-popup-desc{font-size:.92rem;line-height:1.75;color:#4b5563;margin:0;white-space:pre-line}
+@media(max-width:576px){.project-popup-card{max-width:95%;border-radius:16px}.project-popup-img-wrap{height:200px}.project-popup-body{padding:1.2rem 1.3rem 1.5rem}}
+</style>
+
+<script>
+function openProjectPopup(el){
+    var card=el.closest('.project-card-clickable');
+    if(!card)return;
+    var img=card.getAttribute('data-image')||'';
+    var title=card.getAttribute('data-title')||'';
+    var category=card.getAttribute('data-category')||'';
+    var location=card.getAttribute('data-location')||'';
+    var year=card.getAttribute('data-year')||'';
+    var desc=card.getAttribute('data-description')||'';
+
+    document.getElementById('popup-img').src=img;
+    document.getElementById('popup-category').textContent=category;
+    document.getElementById('popup-title').textContent=title;
+    document.getElementById('popup-meta').innerHTML='<span><i class="bi bi-geo-alt-fill"></i> '+location+'</span>';
+    document.getElementById('popup-desc').textContent=desc;
+
+    document.getElementById('project-popup').classList.add('show');
+    document.body.style.overflow='hidden';
+}
+function closeProjectPopup(){
+    document.getElementById('project-popup').classList.remove('show');
+    document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeProjectPopup()});
+</script>
 </body>
 </html>
+

@@ -4,6 +4,12 @@
 @section('page-title', 'Tambah Proyek Baru')
 
 @section('admin-content')
+<div class="mb-4">
+    <a href="{{ route('admin.home-editor', ['tab' => 'projects']) }}" class="btn btn-outline-secondary fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i> Kembali ke Home Editor
+    </a>
+</div>
+
 <div class="card border-0 shadow-sm rounded-3">
     <div class="card-header bg-white py-3">
         <h5 class="card-title text-navy mb-0 fw-bold"><i class="bi bi-plus-circle-fill me-2 text-warning"></i>Form Proyek Baru</h5>
@@ -23,10 +29,8 @@
                     <label for="category" class="form-label fw-semibold text-navy">Kategori Proyek *</label>
                     <select name="category" id="category" class="form-select" required>
                         <option value="" disabled selected>Pilih Kategori</option>
-                        <option value="Gudang" {{ old('category') == 'Gudang' ? 'selected' : '' }}>Gudang</option>
-                        <option value="Baja" {{ old('category') == 'Baja' ? 'selected' : '' }}>Konstruksi Baja</option>
-                        <option value="Industri" {{ old('category') == 'Industri' ? 'selected' : '' }}>Bangunan Industri / Pabrik</option>
-                        <option value="Erection" {{ old('category') == 'Erection' ? 'selected' : '' }}>Steel Erection</option>
+                        <option value="Mezzanine" {{ old('category') == 'Mezzanine' ? 'selected' : '' }}>Mezzanine</option>
+                        <option value="Gedung" {{ old('category') == 'Gedung' ? 'selected' : '' }}>Gedung</option>
                     </select>
                 </div>
 
@@ -61,22 +65,15 @@
                 </div>
 
                 <!-- Primary Banner Image -->
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <label for="image" class="form-label fw-semibold text-navy">Foto Utama Proyek *</label>
                     <input type="file" name="image" id="image" class="form-control" required>
                     <span class="text-xs text-muted">Foto utama yang akan tampil di halaman daftar portfolio. (Max: 5MB)</span>
                 </div>
 
-                <!-- Multiple Gallery Images -->
-                <div class="col-md-6">
-                    <label for="gallery" class="form-label fw-semibold text-navy">Upload Foto Galeri / Progres (Multifile)</label>
-                    <input type="file" name="gallery[]" id="gallery" class="form-control" multiple>
-                    <span class="text-xs text-muted">Dapat memilih lebih dari 1 file gambar. (Format: JPG, PNG. Max: 5MB per gambar)</span>
-                </div>
-
                 <!-- Buttons -->
                 <div class="col-12 mt-4 border-top pt-3 text-end">
-                    <a href="{{ route('admin.projects.index') }}" class="btn btn-outline-secondary me-2">Batal</a>
+                    <a href="{{ route('admin.home-editor', ['tab' => 'projects']) }}" class="btn btn-outline-secondary me-2">Batal</a>
                     <button type="submit" class="btn btn-navy text-white fw-bold px-4">Simpan Proyek</button>
                 </div>
             </div>

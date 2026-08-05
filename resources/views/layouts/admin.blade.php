@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/logo-mpa-favicon.png') }}">
 
     <title>@yield('title', 'Admin Dashboard - PT Multi Power Abadi')</title>
 
@@ -19,6 +20,20 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     @yield('styles')
+
+    <!-- Instant Theme Initialization Script (Prevents FOUC) -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('mpa_theme');
+            if (savedTheme) {
+                document.documentElement.setAttribute('data-theme', savedTheme);
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.setAttribute('data-theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+            }
+        })();
+    </script>
 </head>
 <body class="bg-light">
 
@@ -26,8 +41,8 @@
         <div class="row">
             <!-- Sidebar Panel -->
             <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block admin-sidebar collapse position-fixed top-0 start-0 h-100 p-0 shadow-lg" style="z-index: 1000; overflow-y: auto;">
-                <div class="sidebar-heading text-center py-4 bg-navy">
-                    <span class="fs-5 fw-bold text-white"><i class="bi bi-house-door-fill text-danger me-2"></i><span style="color: #ffffff">Multi</span> <span style="color: var(--accent-orange)">Power</span> Admin</span>
+                <div class="sidebar-heading text-center py-4 bg-danger">
+                    <span class="fs-5 fw-bold text-white"><i class="bi bi-house-door-fill text-warning me-2"></i><span style="color: #ffffff">Multi</span> <span class="text-warning">Power</span> Admin</span>
                 </div>
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
@@ -64,7 +79,7 @@
                         <li class="nav-item mt-2">
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
-                                <button type="submit" class="nav-link text-danger border-0 bg-transparent w-100 text-start">
+                                <button type="submit" class="nav-link border-0 bg-transparent w-100 text-start" style="color: #ff9999 !important;">
                                     <i class="bi bi-power me-2"></i> Keluar (Logout)
                                 </button>
                             </form>
@@ -78,8 +93,11 @@
                 <!-- Header bar -->
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2 text-navy fw-bold">@yield('page-title', 'Dashboard')</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group me-2">
+                    <div class="btn-toolbar mb-2 mb-md-0 d-flex align-items-center gap-2">
+                        <button type="button" class="theme-toggle-btn admin-theme-toggle" title="Ganti Mode Tampilan" aria-label="Toggle theme">
+                            <i class="bi bi-moon-fill"></i>
+                        </button>
+                        <div class="btn-group">
                             <span class="btn btn-sm btn-outline-secondary border-0 text-navy fw-semibold"><i class="bi bi-person-fill text-warning me-2"></i>{{ Auth::user()->name }}</span>
                         </div>
                     </div>

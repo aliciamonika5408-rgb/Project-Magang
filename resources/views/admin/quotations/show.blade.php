@@ -4,6 +4,12 @@
 @section('page-title', 'Detail Pengajuan Quotation')
 
 @section('admin-content')
+<div class="mb-4">
+    <a href="{{ route('admin.home-editor', ['tab' => 'quotations']) }}" class="btn btn-outline-secondary fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i> Kembali ke Home Editor
+    </a>
+</div>
+
 <div class="row g-4">
     <!-- Left Column: Details -->
     <div class="col-lg-8">

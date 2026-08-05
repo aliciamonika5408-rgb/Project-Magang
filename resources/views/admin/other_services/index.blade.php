@@ -4,6 +4,12 @@
 @section('page-title', 'Kelola Layanan Lainnya (Dukungan)')
 
 @section('admin-content')
+<div class="mb-4">
+    <a href="{{ route('admin.home-editor') }}" class="btn btn-outline-secondary fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i> Kembali ke Home Editor
+    </a>
+</div>
+
 <div class="d-flex justify-content-between align-items-center mb-4">
     <p class="text-muted mb-0">Daftar layanan konstruksi dukungan & interior yang ditampilkan pada bagian 'Layanan Lainnya'.</p>
     <a href="{{ route('admin.other-services.create') }}" class="btn btn-warning fw-semibold shadow-sm text-navy">
@@ -17,8 +23,7 @@
             <table class="table table-hover table-striped align-middle mb-0">
                 <thead class="table-light text-navy fw-bold text-xs uppercase">
                     <tr>
-                        <th class="ps-4">Icon</th>
-                        <th>Judul Layanan</th>
+                        <th class="ps-4">Judul Layanan</th>
                         <th>Deskripsi</th>
                         <th class="text-end pe-4">Aksi</th>
                     </tr>
@@ -27,11 +32,6 @@
                     @forelse($otherServices as $service)
                         <tr>
                             <td class="ps-4">
-                                <div class="bg-danger bg-opacity-10 text-danger rounded-3 d-inline-flex align-items-center justify-content-center" style="width: 44px; height: 44px; font-size: 1.25rem;">
-                                    <i class="bi {{ $service->icon }}"></i>
-                                </div>
-                            </td>
-                            <td>
                                 <div class="fw-bold text-navy fs-6">{{ $service->title }}</div>
                             </td>
                             <td style="max-width: 400px;">
@@ -54,7 +54,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center py-5 text-muted">
+                            <td colspan="3" class="text-center py-5 text-muted">
                                 <i class="bi bi-inbox fs-1 d-block mb-2 text-secondary"></i>
                                 Belum ada data Layanan Lainnya. Klik tombol di atas untuk menambah data baru.
                             </td>

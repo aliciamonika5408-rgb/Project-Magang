@@ -25,18 +25,11 @@ class AdminOtherServiceController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'icon' => 'required|string|max:100',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
-
-        if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('other_services', 'public');
-            $validated['image'] = $path;
-        }
 
         OtherService::create($validated);
 
-        return redirect()->route('admin.other-services.index')->with('success', 'Layanan Lainnya berhasil ditambahkan!');
+        return redirect()->route('admin.home-editor', ['tab' => 'other-services'])->with('success', 'Layanan Lainnya berhasil ditambahkan!');
     }
 
     public function edit(OtherService $otherService)
@@ -49,21 +42,11 @@ class AdminOtherServiceController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'icon' => 'required|string|max:100',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
         ]);
-
-        if ($request->hasFile('image')) {
-            if ($otherService->image) {
-                Storage::disk('public')->delete($otherService->image);
-            }
-            $path = $request->file('image')->store('other_services', 'public');
-            $validated['image'] = $path;
-        }
 
         $otherService->update($validated);
 
-        return redirect()->route('admin.other-services.index')->with('success', 'Layanan Lainnya berhasil diupdate!');
+        return redirect()->route('admin.home-editor', ['tab' => 'other-services'])->with('success', 'Layanan Lainnya berhasil diupdate!');
     }
 
     public function destroy(OtherService $otherService)
@@ -73,6 +56,6 @@ class AdminOtherServiceController extends Controller
         }
         $otherService->delete();
 
-        return redirect()->route('admin.other-services.index')->with('success', 'Layanan Lainnya berhasil dihapus!');
+        return redirect()->route('admin.home-editor', ['tab' => 'other-services'])->with('success', 'Layanan Lainnya berhasil dihapus!');
     }
 }

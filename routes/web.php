@@ -28,9 +28,11 @@ Route::get('/request-quotation', [QuotationController::class, 'index'])->name('p
 Route::post('/request-quotation/submit', [QuotationController::class, 'store'])->name('public.quotation.submit');
 
 // --- Auth Routes (Breeze) ---
-Route::get('/dashboard', [AdminDashboardController::class, 'index'])
+Route::get('/admin', [AdminDashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
+
+Route::redirect('/dashboard', '/admin');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

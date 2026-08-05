@@ -4,6 +4,12 @@
 @section('page-title', 'Edit Layanan: ' . $service->title)
 
 @section('admin-content')
+<div class="mb-4">
+    <a href="{{ route('admin.home-editor', ['tab' => 'services']) }}" class="btn btn-outline-secondary fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i> Kembali ke Home Editor
+    </a>
+</div>
+
 <div class="card border-0 shadow-sm rounded-3">
     <div class="card-header bg-white py-3">
         <h5 class="card-title text-navy mb-0 fw-bold"><i class="bi bi-pencil-fill me-2 text-warning"></i>Form Edit Layanan</h5>
@@ -53,7 +59,7 @@
 
                 <!-- Buttons -->
                 <div class="col-12 mt-4 border-top pt-3 text-end">
-                    <a href="{{ route('admin.services.index') }}" class="btn btn-outline-secondary me-2">Batal</a>
+                    <a href="{{ route('admin.home-editor', ['tab' => 'services']) }}" class="btn btn-outline-secondary me-2">Batal</a>
                     <button type="submit" class="btn btn-navy text-white fw-bold px-4">Simpan Perubahan</button>
                 </div>
             </div>

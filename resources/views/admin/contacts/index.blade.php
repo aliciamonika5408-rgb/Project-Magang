@@ -4,6 +4,12 @@
 @section('page-title', 'Pesan Hubungi Kami')
 
 @section('admin-content')
+<div class="mb-4">
+    <a href="{{ route('admin.home-editor') }}" class="btn btn-outline-secondary fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i> Kembali ke Home Editor
+    </a>
+</div>
+
 <div class="card border-0 shadow-sm rounded-3">
     <div class="card-header bg-white py-3">
         <h5 class="card-title text-navy mb-0 fw-bold"><i class="bi bi-chat-left-text-fill text-warning me-2"></i>Daftar Pesan Masuk</h5>

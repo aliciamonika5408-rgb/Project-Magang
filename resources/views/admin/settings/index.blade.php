@@ -5,6 +5,12 @@
 
 @section('admin-content')
 <div class="mb-4">
+    <a href="{{ route('admin.home-editor') }}" class="btn btn-outline-secondary fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i> Kembali ke Home Editor
+    </a>
+</div>
+
+<div class="mb-4">
     <p class="text-muted">Ubah nilai angka statistik perusahaan yang tampil pada halaman depan website (Tahun Pengalaman, Proyek Selesai, Tenaga Ahli, dan Kecelakaan Kerja).</p>
 </div>
 

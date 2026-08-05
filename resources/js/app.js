@@ -100,10 +100,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const updateCount = () => {
                 count += increment;
                 if (count < target) {
-                    stat.innerText = Math.floor(count) + (stat.getAttribute('data-suffix') || '');
+                    stat.innerText = Math.floor(count).toLocaleString('en-US') + (stat.getAttribute('data-suffix') || '');
                     requestAnimationFrame(updateCount);
                 } else {
-                    stat.innerText = target + (stat.getAttribute('data-suffix') || '');
+                    stat.innerText = target.toLocaleString('en-US') + (stat.getAttribute('data-suffix') || '');
                 }
             };
             updateCount();
@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, {
-            threshold: 0.2
+            threshold: 0.05
         });
         statsObserver.observe(statsSection);
     }
@@ -193,6 +193,42 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // --- 8. Dark / Light Mode Theme Toggle Controller ---
+    const themeToggleButtons = document.querySelectorAll('.theme-toggle-btn');
+    
+    const updateThemeIcons = (theme) => {
+        themeToggleButtons.forEach(btn => {
+            const icon = btn.querySelector('i');
+            if (icon) {
+                if (theme === 'dark') {
+                    icon.className = 'bi bi-sun-fill';
+                    btn.setAttribute('title', 'Mode Terang (Light Mode)');
+                    btn.setAttribute('aria-label', 'Switch to Light Mode');
+                } else {
+                    icon.className = 'bi bi-moon-fill';
+                    btn.setAttribute('title', 'Mode Gelap (Dark Mode)');
+                    btn.setAttribute('aria-label', 'Switch to Dark Mode');
+                }
+            }
+        });
+    };
+
+    // Initialize icon state on load
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    updateThemeIcons(currentTheme);
+
+    themeToggleButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const activeTheme = document.documentElement.getAttribute('data-theme') || 'light';
+            const newTheme = activeTheme === 'dark' ? 'light' : 'dark';
+
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('mpa_theme', newTheme);
+            updateThemeIcons(newTheme);
+        });
+    });
 });
+
 
 

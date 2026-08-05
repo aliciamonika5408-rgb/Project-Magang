@@ -45,7 +45,7 @@ class AdminServiceController extends Controller
 
         Service::create($validated);
 
-        return redirect()->route('admin.services.index')->with('success', 'Layanan berhasil dibuat!');
+        return redirect()->route('admin.home-editor', ['tab' => 'services'])->with('success', 'Layanan berhasil dibuat!');
     }
 
     public function edit(Service $service)
@@ -82,7 +82,7 @@ class AdminServiceController extends Controller
 
         $service->update($validated);
 
-        return redirect()->route('admin.services.index')->with('success', 'Layanan berhasil diupdate!');
+        return redirect()->route('admin.home-editor', ['tab' => 'services'])->with('success', 'Layanan berhasil diupdate!');
     }
 
     public function destroy(Service $service)
@@ -92,6 +92,6 @@ class AdminServiceController extends Controller
         }
         $service->delete();
 
-        return redirect()->route('admin.services.index')->with('success', 'Layanan berhasil dihapus!');
+        return redirect()->route('admin.home-editor', ['tab' => 'services'])->with('success', 'Layanan berhasil dihapus!');
     }
 }

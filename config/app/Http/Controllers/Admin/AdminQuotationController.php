@@ -51,6 +51,6 @@ class AdminQuotationController extends Controller
         
         $quotation->delete();
 
-        return redirect()->route('admin.quotations.index')->with('success', 'Quotation berhasil dihapus!');
+        return redirect()->route('admin.home-editor', ['tab' => 'quotations'])->with('success', 'Quotation berhasil dihapus!');
     }
 }

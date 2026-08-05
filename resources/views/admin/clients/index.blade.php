@@ -4,6 +4,12 @@
 @section('page-title', 'Daftar Klien / Partner')
 
 @section('admin-content')
+<div class="mb-4">
+    <a href="{{ route('admin.home-editor') }}" class="btn btn-outline-secondary fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i> Kembali ke Home Editor
+    </a>
+</div>
+
 <div class="card border-0 shadow-sm rounded-3">
     <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
         <h5 class="card-title text-navy mb-0 fw-bold"><i class="bi bi-people me-2 text-warning"></i>Klien & Partner Logo</h5>
@@ -16,7 +22,6 @@
                     <tr>
                         <th class="ps-3" style="width: 120px;">Logo</th>
                         <th>Perusahaan / Mitra</th>
-                        <th>Website Link</th>
                         <th class="text-end pe-3" style="width: 150px;">Aksi</th>
                     </tr>
                 </thead>
@@ -31,13 +36,6 @@
                             <td>
                                 <strong class="text-navy">{{ $client->name }}</strong>
                             </td>
-                            <td>
-                                @if($client->website_url)
-                                    <a href="{{ $client->website_url }}" target="_blank" class="text-decoration-none text-warning fw-semibold"><i class="bi bi-box-arrow-up-right me-1"></i> {{ $client->website_url }}</a>
-                                @else
-                                    <span class="text-muted text-xs">Tidak ada tautan</span>
-                                @endif
-                            </td>
                             <td class="text-end pe-3">
                                 <div class="btn-group">
                                     <a href="{{ route('admin.clients.edit', $client->id) }}" class="btn btn-outline-warning btn-sm me-1 rounded"><i class="bi bi-pencil-square"></i> Edit</a>
@@ -51,7 +49,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4" class="text-center py-4 text-muted">Belum ada partner/klien terdaftar. Silakan tambahkan partner baru.</td>
+                            <td colspan="3" class="text-center py-4 text-muted">Belum ada partner/klien terdaftar. Silakan tambahkan partner baru.</td>
                         </tr>
                     @endforelse
                 </tbody>

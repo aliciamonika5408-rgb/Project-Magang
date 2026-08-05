@@ -24,8 +24,7 @@ class AdminClientController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'required|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
-            'website_url' => 'nullable|url|max:255',
+            'logo' => 'required|image|mimes:jpg,jpeg,png,webp,svg|max:5120',
         ]);
 
         if ($request->hasFile('logo')) {
@@ -36,7 +35,7 @@ class AdminClientController extends Controller
         unset($validated['logo']);
         Client::create($validated);
 
-        return redirect()->route('admin.clients.index')->with('success', 'Klien berhasil ditambahkan!');
+        return redirect()->route('admin.home-editor', ['tab' => 'clients'])->with('success', 'Klien berhasil ditambahkan!');
     }
 
     public function edit(Client $client)
@@ -48,8 +47,7 @@ class AdminClientController extends Controller
     {
         $validated = $request->validate([
             'name' => 'required|string|max:255',
-            'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:2048',
-            'website_url' => 'nullable|url|max:255',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png,webp,svg|max:5120',
         ]);
 
         if ($request->hasFile('logo')) {
@@ -63,7 +61,7 @@ class AdminClientController extends Controller
         unset($validated['logo']);
         $client->update($validated);
 
-        return redirect()->route('admin.clients.index')->with('success', 'Klien berhasil diupdate!');
+        return redirect()->route('admin.home-editor', ['tab' => 'clients'])->with('success', 'Klien berhasil diupdate!');
     }
 
     public function destroy(Client $client)
@@ -73,6 +71,6 @@ class AdminClientController extends Controller
         }
         $client->delete();
 
-        return redirect()->route('admin.clients.index')->with('success', 'Klien berhasil dihapus!');
+        return redirect()->route('admin.home-editor', ['tab' => 'clients'])->with('success', 'Klien berhasil dihapus!');
     }
 }

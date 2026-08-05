@@ -5,18 +5,18 @@
 
 @section('admin-content')
 <div class="mb-4">
-    <a href="{{ route('admin.other-services.index') }}" class="text-decoration-none text-navy fw-semibold">
-        <i class="bi bi-arrow-left me-1"></i> Kembali ke Daftar Layanan Lainnya
+    <a href="{{ route('admin.home-editor', ['tab' => 'other-services']) }}" class="btn btn-outline-secondary fw-semibold">
+        <i class="bi bi-arrow-left me-1"></i> Kembali ke Home Editor
     </a>
 </div>
 
 <div class="card border-0 shadow-sm rounded-3">
     <div class="card-body p-4 p-md-5">
-        <form action="{{ route('admin.other-services.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.other-services.store') }}" method="POST">
             @csrf
 
             <div class="row g-4">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="mb-3">
                         <label for="title" class="form-label fw-bold text-navy">Judul Layanan <span class="text-danger">*</span></label>
                         <input type="text" class="form-control @error('title') is-invalid @enderror" id="title" name="title" value="{{ old('title') }}" required placeholder="Contoh: Konstruksi Renovasi Residensial & Komersial">
@@ -33,47 +33,15 @@
                         @enderror
                     </div>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="mb-3">
-                        <label for="icon" class="form-label fw-bold text-navy">Icon Bootstrap <span class="text-danger">*</span></label>
-                        <div class="input-group">
-                            <span class="input-group-text bg-light"><i class="bi bi-tools" id="icon-preview"></i></span>
-                            <input type="text" class="form-control @error('icon') is-invalid @enderror" id="icon" name="icon" value="{{ old('icon', 'bi-tools') }}" required placeholder="bi-house-gear-fill">
-                        </div>
-                        <small class="text-muted">Gunakan nama ikon Bootstrap Icons, contoh: <code>bi-house-gear-fill</code>, <code>bi-vector-pen</code>, <code>bi-lightning-charge-fill</code>, <code>bi-hammer</code></small>
-                        @error('icon')
-                            <div class="invalid-feedback d-block">{{ $message }}</div>
-                        @enderror
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="image" class="form-label fw-bold text-navy">Gambar Ilustrasi (Opsional)</label>
-                        <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/*">
-                        <small class="text-muted">Format: JPG, PNG, WEBP (Maks 5MB)</small>
-                        @error('image')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
-                    </div>
-                </div>
             </div>
 
             <hr class="my-4">
 
             <div class="d-flex justify-content-end gap-2">
-                <a href="{{ route('admin.other-services.index') }}" class="btn btn-light px-4">Batal</a>
+                <a href="{{ route('admin.home-editor', ['tab' => 'other-services']) }}" class="btn btn-light px-4">Batal</a>
                 <button type="submit" class="btn btn-warning px-4 fw-semibold text-navy">Simpan Layanan</button>
             </div>
         </form>
     </div>
 </div>
-
-@section('scripts')
-<script>
-    document.getElementById('icon').addEventListener('input', function() {
-        const preview = document.getElementById('icon-preview');
-        preview.className = 'bi ' + this.value;
-    });
-</script>
-@endsection
 @endsection
