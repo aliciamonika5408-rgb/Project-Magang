@@ -3,7 +3,7 @@
     "private": true,
     "type": "module",
     "scripts": {
-        "build": "echo 'PHP Native project: Assets pre-compiled in public/build'"
+        "build": "echo 'No build required'"
     },
     "devDependencies": {
         "alpinejs": "^3.4.2",
